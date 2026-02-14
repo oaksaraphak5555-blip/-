@@ -2,13 +2,15 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>เว็บแรกของผม</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เว็บไซต์ของผม</title>
+
 <style>
 body {
-  font-family: Tahoma;
+  margin: 0;
+  font-family: Tahoma, sans-serif;
   background: #f4f6f8;
   text-align: center;
-  margin: 0;
 }
 
 header {
@@ -17,21 +19,63 @@ header {
   padding: 20px;
 }
 
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
 section {
   padding: 40px;
 }
-</style>
-</head>
 
+footer {
+  background: #222;
+  color: white;
+  padding: 15px;
+  margin-top: 30px;
+}
+</style>
+
+</head>
 <body>
 
 <header>
-  <h1>สวัสดี GitHub</h1>
+  <h1>เว็บไซต์ของผม 🌐</h1>
+  <nav>
+    <a href="#home">หน้าแรก</a>
+    <a href="#about">เกี่ยวกับผม</a>
+    <a href="#contact">ติดต่อ</a>
+  </nav>
 </header>
 
-<section>
-  <p>นี่คือเว็บไซต์ออนไลน์ของผม 🎉</p>
+<section id="home">
+  <h2>หน้าแรก</h2>
+  <p>ยินดีต้อนรับสู่เว็บไซต์ของผมครับ 🎉</p>
 </section>
+
+<section id="about">
+  <h2>เกี่ยวกับผม</h2>
+  <p>ผมกำลังฝึกทำเว็บไซต์ด้วย GitHub</p>
+</section>
+
+<section id="contact">
+  <h2>ติดต่อ</h2>
+  <p>Email: example@email.com</p>
+</section>
+
+<footer>
+  © 2026 เว็บไซต์ของผม
+</footer>
 
 </body>
 </html>
