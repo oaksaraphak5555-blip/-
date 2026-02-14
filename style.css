@@ -1,45 +1,62 @@
+/* ตั้งค่าพื้นฐาน */
 body {
   margin: 0;
   font-family: Tahoma, sans-serif;
-  background: #f0fff4;
+  background: #f9fff2;
 }
 
+/* หัวเว็บ */
 header {
   background: #1b5e20;
-  color: white;
+  color: #ffeb3b;
   padding: 20px;
   text-align: center;
 }
 
+/* เมนู */
 nav {
   background: #2e7d32;
-  padding: 10px;
+  padding: 12px;
   text-align: center;
 }
 
 nav a {
-  color: white;
-  margin: 0 15px;
+  color: #ffeb3b;
+  margin: 0 10px;
   text-decoration: none;
   font-weight: bold;
+  display: inline-block;
+  padding: 5px 8px;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  background: #ffeb3b;
+  color: #1b5e20;
+  border-radius: 5px;
 }
 
+/* เนื้อหา */
 section {
-  padding: 30px;
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
 }
 
+/* ตาราง */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 15px;
+  background: white;
 }
 
 table, th, td {
-  border: 1px solid #ccc;
+  border: 1px solid #2e7d32;
+}
+
+th {
+  background: #1b5e20;
+  color: #ffeb3b;
 }
 
 th, td {
@@ -47,10 +64,28 @@ th, td {
   text-align: center;
 }
 
+/* ฟุตเตอร์ */
 footer {
   background: #1b5e20;
-  color: white;
+  color: #ffeb3b;
   text-align: center;
   padding: 15px;
   margin-top: 30px;
 }
+
+/* ===== Responsive สำหรับมือถือ ===== */
+@media (max-width: 768px) {
+
+  nav a {
+    display: block;
+    margin: 8px 0;
+  }
+
+  th, td {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
