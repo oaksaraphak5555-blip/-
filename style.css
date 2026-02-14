@@ -1,0 +1,54 @@
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 0;
+  background: #f4f6f8;
+}
+
+/* ส่วนหัวเว็บ */
+header {
+  background: #0066cc;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* เมนู */
+nav {
+  background: #004c99;
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* กล่องเนื้อหา */
+.container {
+  padding: 30px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* ท้ายเว็บ */
+footer {
+  background: #003366;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
