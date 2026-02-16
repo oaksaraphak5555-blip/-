@@ -3,46 +3,273 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>หน้าแรก</title>
+<title>โรงเรียนสีเขียว</title>
+
 <style>
-body{margin:0;font-family:Arial;background:#f4f4f4}
-header{background:#2e8b57;color:#fff;padding:15px;position:relative}
-nav{display:flex;gap:20px}
-nav a{color:white;text-decoration:none;font-weight:bold}
-nav a:hover{text-decoration:underline}
-.menu-toggle{display:none;font-size:28px;cursor:pointer;position:absolute;right:20px;top:15px}
-@media(max-width:768px){
-nav{display:none;flex-direction:column;background:#2e8b57;padding:10px}
-nav.active{display:flex}
-.menu-toggle{display:block}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f4f4f4;overflow-x:hidden}
+
+/* HEADER */
+header{
+background:#2e8b57;
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
-section{padding:20px}
-footer{background:#2e8b57;color:white;text-align:center;padding:10px}
+
+.menu-toggle{
+font-size:28px;
+cursor:pointer;
+}
+
+/* SIDE MENU */
+#sideMenu{
+position:fixed;
+top:0;
+left:-260px;
+width:260px;
+height:100%;
+background:#2e8b57;
+padding-top:60px;
+transition:0.4s ease;
+}
+
+#sideMenu a{
+display:block;
+padding:15px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+#sideMenu a:hover{
+background:rgba(255,255,255,0.2);
+}
+
+#sideMenu.active{
+left:0;
+}
+
+/* CONTENT */
+section{
+padding:20px;
+min-height:70vh;
+}
+
+footer{
+background:#2e8b57;
+color:white;
+text-align:center;
+padding:10px;
+}
+
+/* เกรดแบบเปิดปิด */
+details{
+margin-bottom:10px;
+background:white;
+padding:10px;
+border-radius:8px;
+}
+
+summary{
+font-weight:bold;
+cursor:pointer;
+}
 </style>
 </head>
+
 <body>
 
 <header>
 <h1>โรงเรียนสีเขียว</h1>
 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-<nav id="menu">
+</header>
+
+<div id="sideMenu">
 <a href="index.html">หน้าแรก</a>
 <a href="apply.html">สมัครเรียน</a>
 <a href="grades.html">คะแนน</a>
 <a href="activities.html">กิจกรรม</a>
-</nav>
-</header>
+</div>
 
 <section>
-<h2>ยินดีต้อนรับ</h2>
-<p>นี่คือเว็บไซต์ประชาสัมพันธ์โรงเรียน</p>
+
+<h2>ตัวอย่างหน้าเกรด</h2>
+
+<details>
+<summary>มัธยมศึกษาปีที่ 1</summary>
+<p>รายชื่อนักเรียนและคะแนน</p>
+</details>
+
+<details>
+<summary>มัธยมศึกษาปีที่ 2</summary>
+<p>รายชื่อนักเรียนและคะแนน</p>
+</details>
+
+<details>
+<summary>มัธยมศึกษาปีที่ 3</summary>
+<p>รายชื่อนักเรียนและคะแนน</p>
+</details>
+
+<hr>
+
+<h2>กิจกรรมเดือนมีนาคม</h2>
+<ul>
+<li>สอบวันที่ 1 มีนาคม</li>
+<li>สอบวันที่ 2 มีนาคม</li>
+<li>สอบวันที่ 3 มีนาคม</li>
+<li>ปัจฉิมนิเทศ วันที่ 5 มีนาคม</li>
+</ul>
+
 </section>
 
-<footer>© 2026 โรงเรียนสีเขียว</footer>
+<footer>
+© 2026 โรงเรียนสีเขียว
+</footer>
 
 <script>
 function toggleMenu(){
-document.getElementById("menu").classList.toggle("active");
+document.getElementById("sideMenu").classList.toggle("active");
+}
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>โรงเรียนสีเขียว</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f4f4f4;overflow-x:hidden}
+
+/* HEADER */
+header{
+background:#2e8b57;
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.menu-toggle{
+font-size:28px;
+cursor:pointer;
+}
+
+/* SIDE MENU */
+#sideMenu{
+position:fixed;
+top:0;
+left:-260px;
+width:260px;
+height:100%;
+background:#2e8b57;
+padding-top:60px;
+transition:0.4s ease;
+}
+
+#sideMenu a{
+display:block;
+padding:15px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+#sideMenu a:hover{
+background:rgba(255,255,255,0.2);
+}
+
+#sideMenu.active{
+left:0;
+}
+
+/* CONTENT */
+section{
+padding:20px;
+min-height:70vh;
+}
+
+footer{
+background:#2e8b57;
+color:white;
+text-align:center;
+padding:10px;
+}
+
+/* เกรดแบบเปิดปิด */
+details{
+margin-bottom:10px;
+background:white;
+padding:10px;
+border-radius:8px;
+}
+
+summary{
+font-weight:bold;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>โรงเรียนสีเขียว</h1>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+</header>
+
+<div id="sideMenu">
+<a href="index.html">หน้าแรก</a>
+<a href="apply.html">สมัครเรียน</a>
+<a href="grades.html">คะแนน</a>
+<a href="activities.html">กิจกรรม</a>
+</div>
+
+<section>
+
+<h2>ตัวอย่างหน้าเกรด</h2>
+
+<details>
+<summary>มัธยมศึกษาปีที่ 1</summary>
+<p>รายชื่อนักเรียนและคะแนน</p>
+</details>
+
+<details>
+<summary>มัธยมศึกษาปีที่ 2</summary>
+<p>รายชื่อนักเรียนและคะแนน</p>
+</details>
+
+<details>
+<summary>มัธยมศึกษาปีที่ 3</summary>
+<p>รายชื่อนักเรียนและคะแนน</p>
+</details>
+
+<hr>
+
+<h2>กิจกรรมเดือนมีนาคม</h2>
+<ul>
+<li>สอบวันที่ 1 มีนาคม</li>
+<li>สอบวันที่ 2 มีนาคม</li>
+<li>สอบวันที่ 3 มีนาคม</li>
+<li>ปัจฉิมนิเทศ วันที่ 5 มีนาคม</li>
+</ul>
+
+</section>
+
+<footer>
+© 2026 โรงเรียนสีเขียว
+</footer>
+
+<script>
+function toggleMenu(){
+document.getElementById("sideMenu").classList.toggle("active");
 }
 </script>
 
