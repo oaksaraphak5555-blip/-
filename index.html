@@ -2,30 +2,49 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>โรงเรียนสีเขียว</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>หน้าแรก</title>
+<style>
+body{margin:0;font-family:Arial;background:#f4f4f4}
+header{background:#2e8b57;color:#fff;padding:15px;position:relative}
+nav{display:flex;gap:20px}
+nav a{color:white;text-decoration:none;font-weight:bold}
+nav a:hover{text-decoration:underline}
+.menu-toggle{display:none;font-size:28px;cursor:pointer;position:absolute;right:20px;top:15px}
+@media(max-width:768px){
+nav{display:none;flex-direction:column;background:#2e8b57;padding:10px}
+nav.active{display:flex}
+.menu-toggle{display:block}
+}
+section{padding:20px}
+footer{background:#2e8b57;color:white;text-align:center;padding:10px}
+</style>
 </head>
 <body>
 
 <header>
-  <h1>โรงเรียนสีเขียว 🌿</h1>
+<h1>โรงเรียนสีเขียว</h1>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<nav id="menu">
+<a href="index.html">หน้าแรก</a>
+<a href="apply.html">สมัครเรียน</a>
+<a href="grades.html">คะแนน</a>
+<a href="activities.html">กิจกรรม</a>
+</nav>
 </header>
 
-<nav>
-  <a href="index.html">หน้าแรก</a>
-  <a href="apply.html">เปิดรับสมัคร</a>
-  <a href="grades.html">คะแนน/เกรด</a>
-  <a href="activities.html">กิจกรรมรายเดือน</a>
-</nav>
-
 <section>
-  <h2>ยินดีต้อนรับ</h2>
-  <p>เว็บไซต์อย่างเป็นทางการของโรงเรียนสีเขียว</p>
+<h2>ยินดีต้อนรับ</h2>
+<p>นี่คือเว็บไซต์ประชาสัมพันธ์โรงเรียน</p>
 </section>
 
-<footer>
-  © 2026 โรงเรียนสีเขียว
-</footer>
+<footer>© 2026 โรงเรียนสีเขียว</footer>
+
+<script>
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
