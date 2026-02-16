@@ -2,59 +2,100 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>กิจกรรมรายเดือน</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>โรงเรียนสีเขียว</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f4f4f4;overflow-x:hidden}
+
+/* HEADER */
+header{
+background:#2e8b57;
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.menu-toggle{
+font-size:28px;
+cursor:pointer;
+}
+
+/* SIDE MENU */
+#sideMenu{
+position:fixed;
+top:0;
+left:-250px;   /* ซ่อนอยู่นอกจอ */
+width:250px;
+height:100%;
+background:#2e8b57;
+padding-top:60px;
+transition:0.4s ease;   /* ทำให้เลื่อนช้าๆ */
+}
+
+#sideMenu a{
+display:block;
+padding:15px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+#sideMenu a:hover{
+background:rgba(255,255,255,0.2);
+}
+
+/* ตอนเปิดเมนู */
+#sideMenu.active{
+left:0;
+}
+
+/* เนื้อหา */
+section{
+padding:20px;
+}
+
+footer{
+background:#2e8b57;
+color:white;
+text-align:center;
+padding:10px;
+margin-top:20px;
+}
+</style>
 </head>
+
 <body>
 
 <header>
-  <h1>ตารางกิจกรรมรายเดือน 📅</h1>
+<h1>โรงเรียนสีเขียว</h1>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
 </header>
 
-<nav>
-  <a href="index.html">หน้าแรก</a>
-  <a href="apply.html">เปิดรับสมัคร</a>
-  <a href="grades.html">คะแนน/เกรด</a>
-  <a href="activities.html">กิจกรรมรายเดือน</a>
-</nav>
+<div id="sideMenu">
+<a href="index.html">หน้าแรก</a>
+<a href="apply.html">สมัครเรียน</a>
+<a href="grades.html">คะแนน</a>
+<a href="activities.html">กิจกรรม</a>
+</div>
 
 <section>
-  <h2>กิจกรรมเดือนมกราคม</h2>
-  <table>
-    <tr>
-      <th>วันที่</th>
-      <th>กิจกรรม</th>
-    </tr>
-    <tr>
-      <td>5 ม.ค.</td>
-      <td>ประชุมผู้ปกครอง</td>
-    </tr>
-    <tr>
-      <td>20 ม.ค.</td>
-      <td>กีฬาสี</td>
-    </tr>
-  </table>
-
-  <h2>กิจกรรมเดือนกุมภาพันธ์</h2>
-  <table>
-    <tr>
-      <th>วันที่</th>
-      <th>กิจกรรม</th>
-    </tr>
-    <tr>
-      <td>14 ก.พ.</td>
-      <td>วันวิชาการ</td>
-    </tr>
-    <tr>
-      <td>28 ก.พ.</td>
-      <td>สอบกลางภาค</td>
-    </tr>
-  </table>
+<h2>ยินดีต้อนรับ</h2>
+<p>เมนูจะเลื่อนออกจากด้านซ้ายแบบนุ่มนวล</p>
 </section>
 
 <footer>
-  © 2026 โรงเรียนเขียวเหลือง
+© 2026 โรงเรียนสีเขียว
 </footer>
+
+<script>
+function toggleMenu(){
+document.getElementById("sideMenu").classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
