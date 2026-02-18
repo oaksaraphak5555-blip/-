@@ -22,24 +22,77 @@
 
 <section>
 
+<h3>ค้นหาชื่อนักเรียน</h3>
+<input type="text" id="searchInput" placeholder="พิมพ์ชื่อนักเรียน..." 
+onkeyup="searchStudent()" style="padding:8px;width:100%;max-width:300px;margin-bottom:20px;">
+
 <details>
-<summary>มัธยมศึกษาปีที่ 1</summary>
-<p>ข้อมูลคะแนน ม.1</p>
+<summary>มัธยมศึกษาปีที่ 1/1</summary>
+<ul class="student-list">
+<li>กิตติพงศ์ ใจดี - 85</li>
+<li>ธนกร ศรีสุข - 78</li>
+<li>ปิยวัฒน์ คำแสน - 90</li>
+<li>นภัสกร ชัยทอง - 88</li>
+<li>พีรพัฒน์ แก้วมา - 75</li>
+<li>ศุภชัย บุญมี - 92</li>
+<li>อภิวัฒน์ มั่นคง - 80</li>
+<li>ธันวา พรหมดี - 70</li>
+<li>กฤษณะ ศรีคำ - 84</li>
+<li>วรเมธ อินทร์สุข - 89</li>
+</ul>
 </details>
 
 <details>
-<summary>มัธยมศึกษาปีที่ 2</summary>
-<p>ข้อมูลคะแนน ม.2</p>
+<summary>มัธยมศึกษาปีที่ 2/1</summary>
+<ul class="student-list">
+<li>ณัฐพงษ์ วงศ์ดี - 82</li>
+<li>กิตติศักดิ์ ทองมาก - 91</li>
+<li>พิชญ์พล ชัยยะ - 77</li>
+<li>ณัฐวุฒิ สุขใจ - 85</li>
+<li>ภูวดล อินทร์แก้ว - 79</li>
+<li>สิรภพ บุญเลิศ - 88</li>
+<li>ธนดล ศรีวงษ์ - 74</li>
+<li>อรรถพล ชัยดี - 93</li>
+<li>พชรพล ทองดี - 81</li>
+<li>จักรภัทร ใจกล้า - 87</li>
+</ul>
 </details>
 
 <details>
-<summary>มัธยมศึกษาปีที่ 3</summary>
-<p>ข้อมูลคะแนน ม.3</p>
+<summary>มัธยมศึกษาปีที่ 3/1</summary>
+<ul class="student-list">
+<li>ธนภัทร สุขเกษม - 90</li>
+<li>วชิรวิทย์ ศรีคำ - 85</li>
+<li>ณรงค์ศักดิ์ ใจมั่น - 76</li>
+<li>ปกรณ์ บุญช่วย - 89</li>
+<li>กฤษดา ศรีทอง - 83</li>
+<li>อนุชา มั่นดี - 92</li>
+<li>ธีรภัทร สุขสำราญ - 78</li>
+<li>ภาคิน อินทรา - 86</li>
+<li>ศุภณัฐ ใจเย็น - 80</li>
+<li>ชานนท์ บุญคำ - 88</li>
+</ul>
 </details>
 
 </section>
 
 <footer>© 2026 โรงเรียน</footer>
 <script src="script.js"></script>
+
+<script>
+function searchStudent() {
+let input = document.getElementById("searchInput").value.toLowerCase();
+let lists = document.querySelectorAll(".student-list li");
+
+lists.forEach(function(item){
+if(item.textContent.toLowerCase().includes(input)){
+item.style.display = "";
+} else {
+item.style.display = "none";
+}
+});
+}
+</script>
+
 </body>
 </html>
