@@ -2,79 +2,44 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>คะแนนและเกรด</title>
-<style>
-body { font-family: Arial, sans-serif; margin:0; background:#f4f4f4; }
-header { background:#2e8b57; color:white; padding:15px; text-align:center; }
-nav { background:#333; text-align:center; padding:10px; }
-nav a { color:white; margin:10px; text-decoration:none; }
-nav a:hover { text-decoration:underline; }
-section { padding:20px; }
-table { width:100%; border-collapse:collapse; background:white; }
-th, td { border:1px solid #ccc; padding:8px; text-align:center; }
-th { background:#2e8b57; color:white; }
-footer { text-align:center; padding:10px; background:#2e8b57; color:white; }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>คะแนน</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-  <h1>ตารางคะแนนและเกรด</h1>
+<h1>คะแนนนักเรียน</h1>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
 </header>
 
-<nav>
-  <a href="index.html">หน้าแรก</a>
-  <a href="apply.html">เปิดรับสมัคร</a>
-  <a href="grades.html">คะแนน/เกรด</a>
-  <a href="activities.html">กิจกรรมรายเดือน</a>
-</nav>
+<div id="sideMenu">
+<a href="index.html">หน้าแรก</a>
+<a href="apply.html">สมัครเรียน</a>
+<a href="grades.html">คะแนน</a>
+<a href="activities.html">กิจกรรม</a>
+</div>
 
 <section>
-<table>
-<tr>
-<th>ลำดับ</th>
-<th>ชื่อ</th>
-<th>ระดับชั้น</th>
-<th>คะแนน</th>
-<th>เกรด</th>
-</tr>
 
-<!-- นักเรียน 70 คน -->
-<tr><td>1</td><td>นักเรียน01</td><td>ม.1</td><td>78</td><td>B</td></tr>
-<tr><td>2</td><td>นักเรียน02</td><td>ม.1</td><td>85</td><td>A</td></tr>
-<tr><td>3</td><td>นักเรียน03</td><td>ม.1</td><td>67</td><td>C</td></tr>
-<tr><td>4</td><td>นักเรียน04</td><td>ม.1</td><td>90</td><td>A</td></tr>
-<tr><td>5</td><td>นักเรียน05</td><td>ม.1</td><td>74</td><td>B</td></tr>
+<details>
+<summary>มัธยมศึกษาปีที่ 1</summary>
+<p>ข้อมูลคะแนน ม.1</p>
+</details>
 
-<tr><td>6</td><td>นักเรียน06</td><td>ม.2</td><td>88</td><td>A</td></tr>
-<tr><td>7</td><td>นักเรียน07</td><td>ม.2</td><td>70</td><td>B</td></tr>
-<tr><td>8</td><td>นักเรียน08</td><td>ม.2</td><td>60</td><td>C</td></tr>
-<tr><td>9</td><td>นักเรียน09</td><td>ม.2</td><td>92</td><td>A</td></tr>
-<tr><td>10</td><td>นักเรียน10</td><td>ม.2</td><td>76</td><td>B</td></tr>
+<details>
+<summary>มัธยมศึกษาปีที่ 2</summary>
+<p>ข้อมูลคะแนน ม.2</p>
+</details>
 
-<tr><td>11</td><td>นักเรียน11</td><td>ม.3</td><td>81</td><td>A</td></tr>
-<tr><td>12</td><td>นักเรียน12</td><td>ม.3</td><td>69</td><td>C</td></tr>
-<tr><td>13</td><td>นักเรียน13</td><td>ม.3</td><td>73</td><td>B</td></tr>
-<tr><td>14</td><td>นักเรียน14</td><td>ม.3</td><td>95</td><td>A</td></tr>
-<tr><td>15</td><td>นักเรียน15</td><td>ม.3</td><td>58</td><td>D</td></tr>
+<details>
+<summary>มัธยมศึกษาปีที่ 3</summary>
+<p>ข้อมูลคะแนน ม.3</p>
+</details>
 
-<tr><td>16</td><td>นักเรียน16</td><td>ม.4</td><td>84</td><td>A</td></tr>
-<tr><td>17</td><td>นักเรียน17</td><td>ม.4</td><td>71</td><td>B</td></tr>
-<tr><td>18</td><td>นักเรียน18</td><td>ม.4</td><td>63</td><td>C</td></tr>
-<tr><td>19</td><td>นักเรียน19</td><td>ม.4</td><td>89</td><td>A</td></tr>
-<tr><td>20</td><td>นักเรียน20</td><td>ม.4</td><td>77</td><td>B</td></tr>
+</section>
 
-<tr><td>21</td><td>นักเรียน21</td><td>ม.5</td><td>82</td><td>A</td></tr>
-<tr><td>22</td><td>นักเรียน22</td><td>ม.5</td><td>68</td><td>C</td></tr>
-<tr><td>23</td><td>นักเรียน23</td><td>ม.5</td><td>74</td><td>B</td></tr>
-<tr><td>24</td><td>นักเรียน24</td><td>ม.5</td><td>91</td><td>A</td></tr>
-<tr><td>25</td><td>นักเรียน25</td><td>ม.5</td><td>59</td><td>D</td></tr>
-
-<tr><td>26</td><td>นักเรียน26</td><td>ม.6</td><td>86</td><td>A</td></tr>
-<tr><td>27</td><td>นักเรียน27</td><td>ม.6</td><td>75</td><td>B</td></tr>
-<tr><td>28</td><td>นักเรียน28</td><td>ม.6</td><td>64</td><td>C</td></tr>
-<tr><td>29</td><td>นักเรียน29</td><td>ม.6</td><td>93</td><td>A</td></tr>
-<tr><td>30</td><td>นักเรียน30</td><td>ม.6</td><td>72</td><td>B</td></tr>
-
-<!-- เพิ่มให้ครบ 70 -->
-<!-- ทำซ้ำรูปแบบเดียวกัน -->
+<footer>© 2026 โรงเรียน</footer>
+<script src="script.js"></script>
+</body>
+</html>
