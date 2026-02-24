@@ -1,10 +1,9 @@
 body{
   margin:0;
-  font-family: "Sarabun", sans-serif;
+  font-family:"Sarabun",sans-serif;
   background: linear-gradient(135deg,#4facfe,#00f2fe);
 }
 
-/* ปุ่ม 3 ขีด */
 .menu-btn{
   font-size:30px;
   color:white;
@@ -57,28 +56,23 @@ body{
   border-radius:10px;
 }
 
-ul{
-  list-style:none;
-  padding:0;
-}
-
-li{
-  padding:8px 0;
-  border-bottom:1px solid #ddd;
-}
-
 table{
   width:100%;
   border-collapse:collapse;
 }
 
-th, td{
+th,td{
   padding:10px;
   border:1px solid #ddd;
-  text-align:left;
 }
 
 th{
   background:#4facfe;
   color:white;
+}
+
+input{
+  padding:8px;
+  width:100%;
+  max-width:300px;
 }
