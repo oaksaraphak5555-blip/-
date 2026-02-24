@@ -3,120 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>กิจกรรมโรงเรียน</title>
-
-<style>
-body{
-  margin:0;
-  font-family: "Sarabun", sans-serif;
-  background: linear-gradient(135deg,#4facfe,#00f2fe);
-}
-
-/* เมนู 3 ขีด */
-.menu-btn{
-  font-size:30px;
-  color:white;
-  padding:15px;
-  cursor:pointer;
-}
-
-.sidebar{
-  position:fixed;
-  left:-260px;
-  top:0;
-  width:250px;
-  height:100%;
-  background:#0f2027;
-  background:linear-gradient(180deg,#2c5364,#203a43,#0f2027);
-  padding-top:60px;
-  transition:0.4s;
-}
-
-.sidebar a{
-  display:block;
-  color:white;
-  padding:15px;
-  text-decoration:none;
-}
-
-.sidebar a:hover{
-  background:rgba(255,255,255,0.2);
-}
-
-.sidebar.active{
-  left:0;
-}
-
-/* กล่องเนื้อหา */
-.container{
-  padding:30px;
-}
-
-.card{
-  background:white;
-  padding:20px;
-  margin-bottom:20px;
-  border-radius:15px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.2);
-}
-
-.card h3{
-  background:#4facfe;
-  color:white;
-  padding:10px;
-  border-radius:10px;
-}
-
-ul{
-  list-style:none;
-  padding:0;
-}
-
-li{
-  padding:8px 0;
-  border-bottom:1px solid #ddd;
-}
-</style>
+<title>หน้าแรก</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
 <div class="sidebar" id="menu">
-  <a href="#">หน้าหลัก</a>
-  <a href="#">กิจกรรม</a>
-  <a href="#">คะแนน</a>
-  <a href="#">ติดต่อ</a>
+  <a href="index.html">หน้าหลัก</a>
+  <a href="activities.html">กิจกรรม</a>
+  <a href="grades.html">คะแนน</a>
+  <a href="contact.html">ติดต่อ</a>
 </div>
 
 <div class="container">
-
   <div class="card">
-    <h3>กิจกรรมเดือนมีนาคม</h3>
-    <ul>
-      <li>สอบวันที่ 1 มีนาคม</li>
-      <li>สอบวันที่ 2 มีนาคม</li>
-      <li>สอบวันที่ 3 มีนาคม</li>
-      <li>ปัจฉิมนิเทศ วันที่ 5 มีนาคม</li>
-    </ul>
+    <h3>ยินดีต้อนรับ</h3>
+    <p>เว็บไซต์ประชาสัมพันธ์โรงเรียน</p>
   </div>
-
-  <div class="card">
-    <h3>กำหนดการรับสมัคร</h3>
-    <ul>
-      <li>วันที่ 18 - 24 กุมภาพันธ์ 2569</li>
-      <li>เวลา 08.30 - 16.30 น.</li>
-    </ul>
-  </div>
-
 </div>
 
-<script>
-function toggleMenu(){
-  document.getElementById("menu").classList.toggle("active");
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
