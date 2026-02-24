@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>คะแนน</title>
+<title>คะแนนนักเรียน</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,14 +18,28 @@
 </div>
 
 <div class="container">
-  <div class="card">
-    <h3>ค้นหาชื่อนักเรียน</h3>
-    <input type="text" id="searchInput" onkeyup="searchStudent()" placeholder="พิมพ์ชื่อ..." style="padding:8px;width:100%;max-width:300px;">
-  </div>
 
-  <div class="card">
-    <h3>คะแนนนักเรียน</h3>
-    <table>
+<div class="card">
+<h3>ค้นหาชื่อนักเรียน</h3>
+<input type="text" id="searchInput" onkeyup="searchStudent()" placeholder="พิมพ์ชื่อ...">
+</div>
+
+<script>
+const container = document.currentScript.parentElement;
+
+for(let grade=1; grade<=6; grade++){
+  for(let room=1; room<=3; room++){
+
+    let card = document.createElement("div");
+    card.className="card";
+
+    let title = document.createElement("h3");
+    title.innerText = "มัธยมศึกษาปีที่ "+grade+"/"+room;
+    card.appendChild(title);
+
+    let table = document.createElement("table");
+
+    table.innerHTML = `
       <thead>
         <tr>
           <th>ชื่อ</th>
@@ -33,18 +47,29 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td>กิตติพงศ์ ใจดี</td><td>85</td></tr>
-        <tr><td>ธนกร ศรีสุข</td><td>78</td></tr>
-        <tr><td>ปิยวัฒน์ คำแสน</td><td>90</td></tr>
-        <tr><td>นภัสกร ชัยทอง</td><td>88</td></tr>
-        <tr><td>พีรพัฒน์ แก้วมา</td><td>75</td></tr>
+      ${generateStudents(grade,room)}
       </tbody>
-    </table>
-  </div>
+    `;
+
+    card.appendChild(table);
+    container.appendChild(card);
+  }
+}
+
+function generateStudents(g,r){
+  let rows="";
+  for(let i=1;i<=25;i++){
+    rows += `<tr>
+      <td>นักเรียน ม${g}/${r} เลขที่ ${i}</td>
+      <td>${Math.floor(Math.random()*41)+60}</td>
+    </tr>`;
+  }
+  return rows;
+}
+</script>
+
 </div>
 
 <script src="script.js"></script>
-</body>
-</html>
 </body>
 </html>
