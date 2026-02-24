@@ -5,124 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>คะแนน</title>
 <link rel="stylesheet" href="style.css">
-
-<style>
-table{
-width:100%;
-border-collapse:collapse;
-background:white;
-margin-bottom:20px;
-}
-
-th, td{
-border:1px solid #ddd;
-padding:8px;
-text-align:left;
-}
-
-th{
-background:#2e8b57;
-color:white;
-}
-
-tr:nth-child(even){
-background:#f2f2f2;
-}
-</style>
-
 </head>
 <body>
 
-<header>
-<h1>คะแนนนักเรียน</h1>
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
-</header>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-<div id="sideMenu">
-<a href="index.html">หน้าแรก</a>
-<a href="apply.html">สมัครเรียน</a>
-<a href="grades.html">คะแนน</a>
-<a href="activities.html">กิจกรรม</a>
+<div class="sidebar" id="menu">
+  <a href="index.html">หน้าหลัก</a>
+  <a href="activities.html">กิจกรรม</a>
+  <a href="grades.html">คะแนน</a>
+  <a href="contact.html">ติดต่อ</a>
 </div>
 
-<section>
+<div class="container">
+  <div class="card">
+    <h3>ค้นหาชื่อนักเรียน</h3>
+    <input type="text" id="searchInput" onkeyup="searchStudent()" placeholder="พิมพ์ชื่อ..." style="padding:8px;width:100%;max-width:300px;">
+  </div>
 
-<h3>ค้นหาชื่อนักเรียน</h3>
-<input type="text" id="searchInput" placeholder="พิมพ์ชื่อนักเรียน..." 
-onkeyup="searchStudent()" 
-style="padding:8px;width:100%;max-width:300px;margin-bottom:20px;">
+  <div class="card">
+    <h3>คะแนนนักเรียน</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>ชื่อ</th>
+          <th>คะแนน</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>กิตติพงศ์ ใจดี</td><td>85</td></tr>
+        <tr><td>ธนกร ศรีสุข</td><td>78</td></tr>
+        <tr><td>ปิยวัฒน์ คำแสน</td><td>90</td></tr>
+        <tr><td>นภัสกร ชัยทอง</td><td>88</td></tr>
+        <tr><td>พีรพัฒน์ แก้วมา</td><td>75</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<h3>มัธยมศึกษาปีที่ 1/1</h3>
-<table class="student-table">
-<tr>
-<th>ชื่อ</th>
-<th>คะแนน</th>
-</tr>
-<tr><td>กิตติพงศ์ ใจดี</td><td>85</td></tr>
-<tr><td>ธนกร ศรีสุข</td><td>78</td></tr>
-<tr><td>ปิยวัฒน์ คำแสน</td><td>90</td></tr>
-<tr><td>นภัสกร ชัยทอง</td><td>88</td></tr>
-<tr><td>พีรพัฒน์ แก้วมา</td><td>75</td></tr>
-<tr><td>ศุภชัย บุญมี</td><td>92</td></tr>
-<tr><td>อภิวัฒน์ มั่นคง</td><td>80</td></tr>
-<tr><td>ธันวา พรหมดี</td><td>70</td></tr>
-<tr><td>กฤษณะ ศรีคำ</td><td>84</td></tr>
-<tr><td>วรเมธ อินทร์สุข</td><td>89</td></tr>
-</table>
-
-<h3>มัธยมศึกษาปีที่ 2/1</h3>
-<table class="student-table">
-<tr>
-<th>ชื่อ</th>
-<th>คะแนน</th>
-</tr>
-<tr><td>ณัฐพงษ์ วงศ์ดี</td><td>82</td></tr>
-<tr><td>กิตติศักดิ์ ทองมาก</td><td>91</td></tr>
-<tr><td>พิชญ์พล ชัยยะ</td><td>77</td></tr>
-<tr><td>ณัฐวุฒิ สุขใจ</td><td>85</td></tr>
-<tr><td>ภูวดล อินทร์แก้ว</td><td>79</td></tr>
-<tr><td>สิรภพ บุญเลิศ</td><td>88</td></tr>
-<tr><td>ธนดล ศรีวงษ์</td><td>74</td></tr>
-<tr><td>อรรถพล ชัยดี</td><td>93</td></tr>
-<tr><td>พชรพล ทองดี</td><td>81</td></tr>
-<tr><td>จักรภัทร ใจกล้า</td><td>87</td></tr>
-</table>
-
-<h3>มัธยมศึกษาปีที่ 3/1</h3>
-<table class="student-table">
-<tr>
-<th>ชื่อ</th>
-<th>คะแนน</th>
-</tr>
-<tr><td>ธนภัทร สุขเกษม</td><td>90</td></tr>
-<tr><td>วชิรวิทย์ ศรีคำ</td><td>85</td></tr>
-<tr><td>ณรงค์ศักดิ์ ใจมั่น</td><td>76</td></tr>
-<tr><td>ปกรณ์ บุญช่วย</td><td>89</td></tr>
-<tr><td>กฤษดา ศรีทอง</td><td>83</td></tr>
-<tr><td>อนุชา มั่นดี</td><td>92</td></tr>
-<tr><td>ธีรภัทร สุขสำราญ</td><td>78</td></tr>
-<tr><td>ภาคิน อินทรา</td><td>86</td></tr>
-<tr><td>ศุภณัฐ ใจเย็น</td><td>80</td></tr>
-<tr><td>ต้นกล้า ขันคำ</td><td>-50</td></tr>
-</table>
-
-</section>
-
-<footer>© 2026 โรงเรียน</footer>
 <script src="script.js"></script>
-
-<script>
-function searchStudent() {
-let input = document.getElementById("searchInput").value.toLowerCase();
-let rows = document.querySelectorAll(".student-table tr");
-
-rows.forEach(function(row, index){
-if(index === 0) return; // ข้ามหัวตาราง
-let text = row.textContent.toLowerCase();
-row.style.display = text.includes(input) ? "" : "none";
-});
-}
-</script>
-
+</body>
+</html>
 </body>
 </html>
