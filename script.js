@@ -8,9 +8,9 @@ function searchStudent(){
 
   rows.forEach(function(row){
     if(row.textContent.toLowerCase().includes(input)){
-      row.style.display = "";
-    } else {
-      row.style.display = "none";
+      row.style.display="";
+    }else{
+      row.style.display="none";
     }
   });
 }
