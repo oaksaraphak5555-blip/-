@@ -4,72 +4,191 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>คะแนนนักเรียน</title>
-<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+font-family:sans-serif;
+margin:0;
+background:#f4f6fb;
+}
+
+.menu-btn{
+font-size:28px;
+padding:15px;
+cursor:pointer;
+position:fixed;
+top:0;
+left:0;
+}
+
+.sidebar{
+position:fixed;
+left:-220px;
+top:0;
+width:200px;
+height:100%;
+background:#2c3e50;
+padding-top:60px;
+transition:0.3s;
+}
+
+.sidebar a{
+display:block;
+color:white;
+padding:12px;
+text-decoration:none;
+}
+
+.sidebar a:hover{
+background:#34495e;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:70px 20px;
+}
+
+.card{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:8px;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:8px;
+text-align:left;
+}
+
+th{
+background:#3498db;
+color:white;
+}
+
+input{
+padding:10px;
+width:100%;
+max-width:300px;
+margin-top:10px;
+}
+
+</style>
 </head>
+
 <body>
 
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
 <div class="sidebar" id="menu">
-  <a href="index.html">หน้าหลัก</a>
-  <a href="activities.html">กิจกรรม</a>
-  <a href="grades.html">คะแนน</a>
-  <a href="contact.html">ติดต่อ</a>
+<a href="index.html">หน้าหลัก</a>
+<a href="activities.html">กิจกรรม</a>
+<a href="grades.html">คะแนน</a>
+<a href="contact.html">ติดต่อ</a>
 </div>
 
-<div class="container">
+<div class="container" id="container">
 
 <div class="card">
 <h3>ค้นหาชื่อนักเรียน</h3>
 <input type="text" id="searchInput" onkeyup="searchStudent()" placeholder="พิมพ์ชื่อ...">
 </div>
 
-<script>
-const container = document.currentScript.parentElement;
-
-for(let grade=1; grade<=6; grade++){
-  for(let room=1; room<=3; room++){
-
-    let card = document.createElement("div");
-    card.className="card";
-
-    let title = document.createElement("h3");
-    title.innerText = "มัธยมศึกษาปีที่ "+grade+"/"+room;
-    card.appendChild(title);
-
-    let table = document.createElement("table");
-
-    table.innerHTML = `
-      <thead>
-        <tr>
-          <th>ชื่อ</th>
-          <th>คะแนน</th>
-        </tr>
-      </thead>
-      <tbody>
-      ${generateStudents(grade,room)}
-      </tbody>
-    `;
-
-    card.appendChild(table);
-    container.appendChild(card);
-  }
-}
-
-function generateStudents(g,r){
-  let rows="";
-  for(let i=1;i<=25;i++){
-    rows += `<tr>
-      <td>นักเรียน ม${g}/${r} เลขที่ ${i}</td>
-      <td>${Math.floor(Math.random()*41)+60}</td>
-    </tr>`;
-  }
-  return rows;
-}
-</script>
-
 </div>
 
-<script src="script.js"></script>
+<script>
+
+function toggleMenu(){
+let menu=document.getElementById("menu");
+menu.style.left = menu.style.left==="0px" ? "-220px":"0px";
+}
+
+const names=[
+"กิตติพงศ์ ใจดี","ธนกร ศรีสุข","ปิยวัฒน์ คำแสน","นภัสกร ชัยทอง","พีรพัฒน์ แก้วมา",
+"ศุภชัย บุญมี","อภิวัฒน์ มั่นคง","ธันวา พรหมดี","กฤษณะ ศรีคำ","วรเมธ อินทร์สุข",
+"ณัฐพงษ์ วงศ์ดี","กิตติศักดิ์ ทองมาก","พิชญ์พล ชัยยะ","ณัฐวุฒิ สุขใจ","ภูวดล อินทร์แก้ว",
+"สิรภพ บุญเลิศ","ธนดล ศรีวงษ์","อรรถพล ชัยดี","พชรพล ทองดี","จักรภัทร ใจกล้า",
+"ธนภัทร สุขเกษม","วชิรวิทย์ ศรีคำ","ณรงค์ศักดิ์ ใจมั่น","ปกรณ์ บุญช่วย","กฤษดา ศรีทอง"
+];
+
+const container=document.getElementById("container");
+
+for(let g=1;g<=6;g++){
+for(let r=1;r<=3;r++){
+
+let card=document.createElement("div");
+card.className="card";
+
+let title=document.createElement("h3");
+title.innerText="มัธยมศึกษาปีที่ "+g+"/"+r;
+
+let table=document.createElement("table");
+
+let rows="";
+
+for(let i=0;i<25;i++){
+
+let score=Math.floor(Math.random()*41)+60;
+
+rows+=`
+<tr>
+<td>${i+1}</td>
+<td>${names[i]}</td>
+<td>${score}</td>
+</tr>
+`;
+
+}
+
+table.innerHTML=`
+<thead>
+<tr>
+<th>เลขที่</th>
+<th>ชื่อ</th>
+<th>คะแนน</th>
+</tr>
+</thead>
+<tbody>
+${rows}
+</tbody>
+`;
+
+card.appendChild(title);
+card.appendChild(table);
+container.appendChild(card);
+
+}
+}
+
+function searchStudent(){
+
+let input=document.getElementById("searchInput").value.toLowerCase();
+let rows=document.querySelectorAll("tbody tr");
+
+rows.forEach(function(row){
+
+let name=row.children[1].textContent.toLowerCase();
+
+if(name.includes(input)){
+row.style.display="";
+}else{
+row.style.display="none";
+}
+
+});
+
+}
+
+</script>
+
 </body>
 </html>
