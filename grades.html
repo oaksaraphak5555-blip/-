@@ -1,62 +1,61 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>คะแนนนักเรียน</title>
+<title>ระบบเกรดนักเรียน</title>
 
 <style>
 
 body{
 margin:0;
 font-family:Arial;
-background:#f4f4f4;
+background:#f2f2f2;
 transition:0.3s;
 }
-
-/* DARK MODE */
 
 .dark{
 background:#121212;
 color:white;
 }
 
-/* ปุ่มเมนู */
+/* เมนู */
 
 .menu-btn{
 position:fixed;
-top:10px;
 left:10px;
+top:10px;
 font-size:28px;
-background:#333;
-color:white;
-padding:8px 12px;
 cursor:pointer;
-z-index:1001;
+z-index:1000;
 }
 
-/* เมนู */
+.dark-btn{
+position:fixed;
+right:10px;
+top:10px;
+font-size:20px;
+padding:6px 10px;
+cursor:pointer;
+}
 
 .sidebar{
 position:fixed;
-top:0;
 left:-250px;
+top:0;
 width:250px;
 height:100%;
 background:#222;
-transition:0.3s;
 padding-top:60px;
-}
-
-.sidebar.show{
-left:0;
+transition:0.3s;
 }
 
 .sidebar a{
 display:block;
-padding:12px 20px;
 color:white;
+padding:12px 20px;
 text-decoration:none;
 }
 
@@ -64,48 +63,37 @@ text-decoration:none;
 background:#444;
 }
 
-/* ปุ่มโหมด */
-
-.darkbtn{
-position:fixed;
-top:10px;
-right:10px;
-padding:8px 12px;
-background:#333;
-color:white;
-cursor:pointer;
+.sidebar.active{
+left:0;
 }
 
-/* เนื้อหา */
-
-.content{
+.container{
+max-width:1000px;
+margin:auto;
 padding:60px 20px;
-text-align:center;
 }
 
-/* ค้นหา */
-
-input{
-padding:10px;
-width:250px;
+.card{
+background:white;
+padding:20px;
 margin-bottom:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* ตาราง */
+.dark .card{
+background:#1e1e1e;
+}
 
 table{
 width:100%;
 border-collapse:collapse;
-background:white;
-}
-
-.dark table{
-background:#222;
 }
 
 th,td{
-border:1px solid #ccc;
 padding:10px;
+border:1px solid #ddd;
+text-align:center;
 }
 
 th{
@@ -113,170 +101,253 @@ background:#4CAF50;
 color:white;
 }
 
-/* แชท */
-
-#chatBox{
-height:250px;
-border:1px solid #ccc;
-overflow-y:auto;
+input{
 padding:10px;
-margin-top:20px;
+margin:5px;
+}
+
+button{
+padding:8px 12px;
+cursor:pointer;
+}
+
+/* chat */
+
+.chat-box{
+height:200px;
+overflow-y:auto;
+border:1px solid #ccc;
+padding:10px;
+margin-bottom:10px;
 background:white;
 }
 
-.dark #chatBox{
+.dark .chat-box{
 background:#333;
 }
 
+.chat-input{
+width:70%;
+}
+
 </style>
+
 </head>
 
 <body>
 
-<!-- ปุ่มเมนู -->
-
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
+<button class="dark-btn" onclick="toggleDark()">🌙</button>
 
-<!-- ปุ่ม Dark mode -->
-
-<div class="darkbtn" onclick="toggleDark()">🌙</div>
-
-<!-- เมนู -->
-
-<div id="menu" class="sidebar">
-
+<div class="sidebar" id="menu">
 <a href="index.html">หน้าหลัก</a>
-<a href="news.html">ข่าว</a>
-<a href="activity.html">กิจกรรม</a>
-<a href="grades.html">คะแนน</a>
+<a href="grades.html">เกรด</a>
+<a href="activities.html">กิจกรรม</a>
 <a href="contact.html">ติดต่อ</a>
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<h2>ค้นหานักเรียน</h2>
+
+<input id="searchInput" placeholder="พิมพ์ชื่อ..." onkeyup="searchStudent()">
 
 </div>
 
-<div class="content">
+<div class="card">
 
-<h2>รายชื่อนักเรียน</h2>
+<h2>เพิ่มนักเรียน</h2>
 
-<input type="text" id="search" placeholder="ค้นหาชื่อ..." onkeyup="searchName()">
+<input id="gradeLevel" placeholder="ม.">
+<input id="room" placeholder="ห้อง">
+<input id="name" placeholder="ชื่อ">
+<input id="grade" placeholder="เกรด">
+
+<button onclick="addStudent()">เพิ่ม</button>
+
+</div>
+
+<div class="card">
+
+<h2>ตารางนักเรียน</h2>
 
 <table id="studentTable">
+
+<thead>
 
 <tr>
 <th>ชั้น</th>
 <th>ห้อง</th>
 <th>ชื่อ</th>
+<th>เกรด</th>
+<th>ลบ</th>
 </tr>
 
-<tr><td>ม.1</td><td>1</td><td>กิตติพงษ์ ใจดี</td></tr>
-<tr><td>ม.1</td><td>1</td><td>ธนกร พรหมมา</td></tr>
-<tr><td>ม.1</td><td>1</td><td>พีรพล แก้วทอง</td></tr>
-<tr><td>ม.1</td><td>1</td><td>ศุภชัย แสงทอง</td></tr>
-<tr><td>ม.1</td><td>1</td><td>อภิชาติ นาคดี</td></tr>
+</thead>
 
-<tr><td>ม.2</td><td>1</td><td>ปกรณ์ แก้วคำ</td></tr>
-<tr><td>ม.2</td><td>1</td><td>ธีรภัทร์ อินทร์ทอง</td></tr>
-<tr><td>ม.2</td><td>1</td><td>พงศกร สุขดี</td></tr>
-<tr><td>ม.2</td><td>1</td><td>ณัฐพล ศรีวงศ์</td></tr>
-<tr><td>ม.2</td><td>1</td><td>กฤษฎา คำดี</td></tr>
-
-<tr><td>ม.3</td><td>1</td><td>ธีรเมธ ทองดี</td></tr>
-<tr><td>ม.3</td><td>1</td><td>พีรภัทร แสงดี</td></tr>
-<tr><td>ม.3</td><td>1</td><td>ธนากร อินทร์สวัสดิ์</td></tr>
-<tr><td>ม.3</td><td>1</td><td>วีรภัทร คำดี</td></tr>
-<tr><td>ม.3</td><td>1</td><td>ศุภณัฐ ใจบุญ</td></tr>
-
-<tr><td>ม.4</td><td>1</td><td>กิตติศักดิ์ สุขใจ</td></tr>
-<tr><td>ม.4</td><td>1</td><td>ธนพล แสงดี</td></tr>
-<tr><td>ม.4</td><td>1</td><td>วรพล สุขสันต์</td></tr>
-<tr><td>ม.4</td><td>1</td><td>ปวริศ ทองคำ</td></tr>
-<tr><td>ม.4</td><td>1</td><td>อาทิตย์ ศรีงาม</td></tr>
-
-<tr><td>ม.5</td><td>1</td><td>ภัทรดนัย ใจบุญ</td></tr>
-<tr><td>ม.5</td><td>1</td><td>กิตติศักดิ์ ทองสุข</td></tr>
-<tr><td>ม.5</td><td>1</td><td>ธีรเดช คำสิงห์</td></tr>
-<tr><td>ม.5</td><td>1</td><td>ปริญญา ใจกล้า</td></tr>
-<tr><td>ม.5</td><td>1</td><td>ศิวกร แก้วสว่าง</td></tr>
-
-<tr><td>ม.6</td><td>1</td><td>ธันวา สุขใจ</td></tr>
-<tr><td>ม.6</td><td>1</td><td>ภูมิพัฒน์ วงศ์ดี</td></tr>
-<tr><td>ม.6</td><td>1</td><td>ณัฐวุฒิ คำแสน</td></tr>
-<tr><td>ม.6</td><td>1</td><td>กฤตภาส ศรีทอง</td></tr>
-<tr><td>ม.6</td><td>1</td><td>นพดล ใจงาม</td></tr>
+<tbody id="tableBody">
+</tbody>
 
 </table>
 
-<h3>ห้องแชท</h3>
+</div>
 
-<div id="chatBox"></div>
+<div class="card">
 
-<input id="msg" placeholder="พิมพ์ข้อความ...">
-<button onclick="sendMsg()">ส่ง</button>
+<h2>แชทนักเรียน</h2>
+
+<div class="chat-box" id="chatBox"></div>
+
+<input id="chatInput" class="chat-input">
+<button onclick="sendChat()">ส่ง</button>
+
+</div>
 
 </div>
 
 <script>
 
-/* เมนู */
+/* menu */
 
 function toggleMenu(){
-document.getElementById("menu").classList.toggle("show");
-}
 
-/* ปิดเมนูเมื่อกดที่อื่น */
+document.getElementById("menu").classList.toggle("active")
+
+}
 
 document.addEventListener("click",function(e){
 
-let menu=document.getElementById("menu");
-let btn=document.querySelector(".menu-btn");
-
-if(!menu.contains(e.target)&&!btn.contains(e.target)){
-menu.classList.remove("show");
+if(!e.target.closest(".sidebar") && !e.target.closest(".menu-btn")){
+document.getElementById("menu").classList.remove("active")
 }
 
-});
+})
 
-/* Dark mode */
+/* dark mode */
 
 function toggleDark(){
-document.body.classList.toggle("dark");
-}
 
-/* ค้นหา */
-
-function searchName(){
-
-let input=document.getElementById("search").value.toLowerCase();
-let rows=document.querySelectorAll("#studentTable tr");
-
-rows.forEach((row,i)=>{
-
-if(i===0)return;
-
-let name=row.cells[2].innerText.toLowerCase();
-
-row.style.display=name.includes(input)?"":"none";
-
-});
+document.body.classList.toggle("dark")
 
 }
 
-/* แชท */
+/* student system */
 
-function sendMsg(){
+let students = JSON.parse(localStorage.getItem("students")) || []
 
-let msg=document.getElementById("msg").value;
+function renderStudents(){
 
-if(msg==="")return;
+let body = document.getElementById("tableBody")
 
-let p=document.createElement("p");
+body.innerHTML=""
 
-p.innerText=msg;
+students.forEach((s,i)=>{
 
-document.getElementById("chatBox").appendChild(p);
+body.innerHTML += `
+<tr>
+<td>${s.level}</td>
+<td>${s.room}</td>
+<td>${s.name}</td>
+<td contenteditable="true" onblur="updateGrade(${i},this.innerText)">${s.grade}</td>
+<td><button onclick="deleteStudent(${i})">ลบ</button></td>
+</tr>
+`
 
-document.getElementById("msg").value="";
+})
+
+localStorage.setItem("students",JSON.stringify(students))
 
 }
+
+function addStudent(){
+
+let level=document.getElementById("gradeLevel").value
+let room=document.getElementById("room").value
+let name=document.getElementById("name").value
+let grade=document.getElementById("grade").value
+
+students.push({level,room,name,grade})
+
+renderStudents()
+
+}
+
+function deleteStudent(i){
+
+students.splice(i,1)
+
+renderStudents()
+
+}
+
+function updateGrade(i,val){
+
+students[i].grade = val
+
+localStorage.setItem("students",JSON.stringify(students))
+
+}
+
+/* search */
+
+function searchStudent(){
+
+let input=document.getElementById("searchInput").value.toLowerCase()
+
+let rows=document.querySelectorAll("#studentTable tbody tr")
+
+rows.forEach(r=>{
+
+let name=r.children[2].innerText.toLowerCase()
+
+r.style.display = name.includes(input) ? "" : "none"
+
+})
+
+}
+
+/* chat */
+
+let chat = JSON.parse(localStorage.getItem("chat")) || []
+
+function renderChat(){
+
+let box=document.getElementById("chatBox")
+
+box.innerHTML=""
+
+chat.forEach(m=>{
+
+box.innerHTML += "<div>"+m+"</div>"
+
+})
+
+box.scrollTop = box.scrollHeight
+
+}
+
+function sendChat(){
+
+let input=document.getElementById("chatInput")
+
+if(input.value.trim()!=""){
+
+chat.push(input.value)
+
+localStorage.setItem("chat",JSON.stringify(chat))
+
+input.value=""
+
+renderChat()
+
+}
+
+}
+
+renderStudents()
+renderChat()
 
 </script>
 
