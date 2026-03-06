@@ -2,41 +2,96 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>หน้าเกรดนักเรียน</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ระบบดูคะแนนนักเรียน</title>
 
 <style>
 
 body{
-font-family: Arial;
-background:#f4f4f4;
-text-align:center;
+margin:0;
+font-family:sans-serif;
+background:url("bg.jpg") no-repeat center center;
+background-size:cover;
 }
 
-h1{
-margin-top:20px;
-}
-
-input{
+/* เมนู 3 ขีด */
+.menu-btn{
+font-size:30px;
 padding:10px;
-width:300px;
-margin:20px;
+cursor:pointer;
+background:#333;
+color:white;
+position:fixed;
+top:10px;
+left:10px;
+border-radius:5px;
 }
 
+/* เมนูด้านข้าง */
+.sidebar{
+position:fixed;
+left:-250px;
+top:0;
+width:250px;
+height:100%;
+background:#222;
+transition:0.3s;
+padding-top:60px;
+}
+
+.sidebar a{
+display:block;
+color:white;
+padding:15px;
+text-decoration:none;
+}
+
+.sidebar a:hover{
+background:#444;
+}
+
+.sidebar.active{
+left:0;
+}
+
+/* เนื้อหา */
+.content{
+padding:20px;
+margin-top:60px;
+}
+
+/* ตาราง */
 table{
-margin:auto;
+width:100%;
 border-collapse:collapse;
-width:80%;
 background:white;
 }
 
 th,td{
 border:1px solid #ccc;
-padding:10px;
+padding:8px;
+text-align:center;
 }
 
 th{
-background:#4CAF50;
-color:white;
+background:#eee;
+}
+
+/* ช่องค้นหา */
+#search{
+padding:10px;
+width:100%;
+margin-bottom:10px;
+font-size:16px;
+}
+
+/* มือถือ */
+@media(max-width:768px){
+
+table{
+font-size:12px;
+}
+
 }
 
 </style>
@@ -44,92 +99,120 @@ color:white;
 
 <body>
 
-<h1>รายชื่อนักเรียน</h1>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-<input type="text" id="search" placeholder="ค้นหาชื่อ..." onkeyup="searchName()">
+<div class="sidebar" id="menu">
+<a href="#">หน้าแรก</a>
+<a href="#">ดูคะแนน</a>
+<a href="#">แชทพูดคุย</a>
+</div>
 
-<table id="studentTable">
+<div class="content">
 
+<h2>ค้นหาชื่อนักเรียน</h2>
+
+<input type="text" id="search" placeholder="พิมพ์ชื่อ..." onkeyup="searchName()">
+
+<table id="gradeTable">
+
+<thead>
 <tr>
-<th>ระดับ</th>
-<th>ห้อง</th>
 <th>ชื่อ</th>
+<th>ชั้น</th>
+<th>ห้อง</th>
+<th>คณิต</th>
+<th>วิทย์</th>
+<th>อังกฤษ</th>
 </tr>
+</thead>
 
-<tr><td>ม.1</td><td>1</td><td>กิตติพงษ์ ใจดี</td></tr>
-<tr><td>ม.1</td><td>1</td><td>ธนกร พรหมมา</td></tr>
-<tr><td>ม.1</td><td>1</td><td>พีรพล แก้วทอง</td></tr>
-<tr><td>ม.1</td><td>1</td><td>ศุภชัย แสงทอง</td></tr>
-<tr><td>ม.1</td><td>1</td><td>อภิชาติ นาคดี</td></tr>
+<tbody id="data">
 
-<tr><td>ม.1</td><td>2</td><td>ปกรณ์ แก้วคำ</td></tr>
-<tr><td>ม.1</td><td>2</td><td>ธีรภัทร์ อินทร์ทอง</td></tr>
-<tr><td>ม.1</td><td>2</td><td>พงศกร สุขดี</td></tr>
-<tr><td>ม.1</td><td>2</td><td>ณัฐพล ศรีวงศ์</td></tr>
-<tr><td>ม.1</td><td>2</td><td>กฤษฎา คำดี</td></tr>
-
-<tr><td>ม.2</td><td>1</td><td>ศุภกร อินทร์ดี</td></tr>
-<tr><td>ม.2</td><td>1</td><td>ธนวัฒน์ ใจงาม</td></tr>
-<tr><td>ม.2</td><td>1</td><td>พีรณัฐ ศรีทอง</td></tr>
-<tr><td>ม.2</td><td>1</td><td>นครินทร์ แก้วดี</td></tr>
-<tr><td>ม.2</td><td>1</td><td>กรวิชญ์ สุขใจ</td></tr>
-
-<tr><td>ม.3</td><td>1</td><td>ธีรเมธ ทองดี</td></tr>
-<tr><td>ม.3</td><td>1</td><td>พีรภัทร แสงดี</td></tr>
-<tr><td>ม.3</td><td>1</td><td>ธนากร อินทร์สวัสดิ์</td></tr>
-<tr><td>ม.3</td><td>1</td><td>วีรภัทร คำดี</td></tr>
-<tr><td>ม.3</td><td>1</td><td>ศุภณัฐ ใจบุญ</td></tr>
-
-<tr><td>ม.4</td><td>1</td><td>กิตติศักดิ์ สุขใจ</td></tr>
-<tr><td>ม.4</td><td>1</td><td>ธนพล แสงดี</td></tr>
-<tr><td>ม.4</td><td>1</td><td>วรพล สุขสันต์</td></tr>
-<tr><td>ม.4</td><td>1</td><td>ปวริศ ทองคำ</td></tr>
-<tr><td>ม.4</td><td>1</td><td>อาทิตย์ ศรีงาม</td></tr>
-
-<tr><td>ม.5</td><td>1</td><td>ภัทรดนัย ใจบุญ</td></tr>
-<tr><td>ม.5</td><td>1</td><td>กิตติศักดิ์ ทองสุข</td></tr>
-<tr><td>ม.5</td><td>1</td><td>ธีรเดช คำสิงห์</td></tr>
-<tr><td>ม.5</td><td>1</td><td>ปริญญา ใจกล้า</td></tr>
-<tr><td>ม.5</td><td>1</td><td>ศิวกร แก้วสว่าง</td></tr>
-
-<tr><td>ม.6</td><td>1</td><td>ธันวา สุขใจ</td></tr>
-<tr><td>ม.6</td><td>1</td><td>ภูมิพัฒน์ วงศ์ดี</td></tr>
-<tr><td>ม.6</td><td>1</td><td>ณัฐวุฒิ คำแสน</td></tr>
-<tr><td>ม.6</td><td>1</td><td>กฤตภาส ศรีทอง</td></tr>
-<tr><td>ม.6</td><td>1</td><td>นพดล ใจงาม</td></tr>
+</tbody>
 
 </table>
 
+</div>
+
 <script>
 
-function searchName() {
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active");
+}
 
-let input = document.getElementById("search");
-let filter = input.value.toLowerCase();
-let table = document.getElementById("studentTable");
-let tr = table.getElementsByTagName("tr");
+/* รายชื่อนักเรียน */
 
-for (let i = 1; i < tr.length; i++) {
+let students=[];
 
-let td = tr[i].getElementsByTagName("td")[2];
+let names=[
+"กิตติ","สมชาย","ธีรภัทร","พงศกร","ธนกฤต",
+"ปกรณ์","ศุภชัย","วิชาญ","ธันวา","ก้องภพ",
+"ภูมิพัฒน์","ภาคภูมิ","นราธิป","ชัยวัฒน์","ภานุพงศ์"
+];
 
-if (td) {
+for(let grade=1;grade<=6;grade++){
 
-let txtValue = td.textContent || td.innerText;
+for(let room=1;room<=3;room++){
 
-if (txtValue.toLowerCase().indexOf(filter) > -1) {
+for(let i=0;i<15;i++){
 
-tr[i].style.display = "";
-
-} else {
-
-tr[i].style.display = "none";
+students.push({
+name:names[i]+" "+grade+room+i,
+grade:"ม."+grade,
+room:room,
+math:Math.floor(Math.random()*40)+60,
+sci:Math.floor(Math.random()*40)+60,
+eng:Math.floor(Math.random()*40)+60
+});
 
 }
 
 }
 
 }
+
+/* แสดงข้อมูล */
+
+function showData(){
+
+let table="";
+
+students.forEach(s=>{
+
+table+=`
+<tr>
+<td>${s.name}</td>
+<td>${s.grade}</td>
+<td>${s.room}</td>
+<td>${s.math}</td>
+<td>${s.sci}</td>
+<td>${s.eng}</td>
+</tr>
+`;
+
+});
+
+document.getElementById("data").innerHTML=table;
+
+}
+
+showData();
+
+/* ค้นหาชื่อ */
+
+function searchName(){
+
+let input=document.getElementById("search").value.toLowerCase();
+
+let rows=document.querySelectorAll("#gradeTable tbody tr");
+
+rows.forEach(row=>{
+
+let name=row.children[0].textContent.toLowerCase();
+
+row.style.display=name.includes(input)?"":"none";
+
+});
 
 }
 
