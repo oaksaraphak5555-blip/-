@@ -1,37 +1,157 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>รายชื่อนักเรียน</title>
+<title>ระบบรายชื่อนักเรียน</title>
 
-<link rel="stylesheet" href="style.css">
+<style>
 
+body{
+margin:0;
+font-family:Arial;
+background:#f4f4f4;
+transition:0.3s;
+}
+
+/* โหมดมืด */
+
+.dark{
+background:#121212;
+color:white;
+}
+
+/* ปุ่ม 3 ขีด */
+
+.menu-btn{
+font-size:28px;
+padding:10px 15px;
+background:#333;
+color:white;
+cursor:pointer;
+position:fixed;
+top:10px;
+left:10px;
+z-index:1000;
+}
+
+/* ปุ่มโหมดมืด */
+
+.dark-btn{
+position:fixed;
+top:10px;
+right:15px;
+padding:8px 14px;
+border:none;
+background:#333;
+color:white;
+cursor:pointer;
+}
+
+/* เมนู */
+
+.sidebar{
+position:fixed;
+left:-250px;
+top:0;
+width:250px;
+height:100%;
+background:#222;
+transition:0.3s;
+padding-top:60px;
+}
+
+.sidebar a{
+display:block;
+padding:12px 20px;
+color:white;
+text-decoration:none;
+}
+
+.sidebar a:hover{
+background:#444;
+}
+
+.sidebar.show{
+left:0;
+}
+
+/* เนื้อหา */
+
+.content{
+padding:80px 20px;
+text-align:center;
+}
+
+/* ค้นหา */
+
+input{
+padding:10px;
+width:250px;
+margin-bottom:20px;
+}
+
+/* ตาราง */
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+}
+
+.dark table{
+background:#1e1e1e;
+}
+
+th,td{
+border:1px solid #ccc;
+padding:10px;
+}
+
+th{
+background:#4CAF50;
+color:white;
+}
+
+/* มือถือ */
+
+@media (max-width:600px){
+
+table{
+font-size:13px;
+}
+
+input{
+width:90%;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-<button class="theme-btn" onclick="toggleTheme()">🌙</button>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-<span class="menu-btn" onclick="openMenu()">☰</span>
+<button class="dark-btn" onclick="toggleDark()">🌙</button>
 
 <div id="menu" class="sidebar">
 
-<a href="index.html">หน้าแรก</a>
-<a href="grades.html">คะแนน</a>
-<a href="chat.html">แชท</a>
-<a href="activities.html">กิจกรรม</a>
+<a href="index.html">หน้าหลัก</a>
+<a href="grades.html">รายชื่อ</a>
+<a href="news.html">ข่าว</a>
+<a href="activity.html">กิจกรรม</a>
 <a href="contact.html">ติดต่อ</a>
 
 </div>
 
 <div class="content">
 
-<h2>ค้นหานักเรียน</h2>
+<h2>รายชื่อนักเรียน</h2>
 
-<input id="search" onkeyup="searchName()" placeholder="พิมพ์ชื่อ">
+<input type="text" id="search" placeholder="ค้นหาชื่อ..." onkeyup="searchName()">
 
 <table id="studentTable">
 
@@ -41,74 +161,47 @@
 <th>ชื่อ</th>
 </tr>
 
-<!-- ม1 -->
+<!-- ม.1 ห้อง1 -->
+
 <tr><td>ม.1</td><td>1</td><td>กิตติพงษ์ ใจดี</td></tr>
 <tr><td>ม.1</td><td>1</td><td>ธนกร พรหมมา</td></tr>
 <tr><td>ม.1</td><td>1</td><td>พีรพล แก้วทอง</td></tr>
 <tr><td>ม.1</td><td>1</td><td>ศุภชัย แสงทอง</td></tr>
 <tr><td>ม.1</td><td>1</td><td>อภิชาติ นาคดี</td></tr>
-<tr><td>ม.1</td><td>1</td><td>กฤษณะ อินทร์ดี</td></tr>
-<tr><td>ม.1</td><td>1</td><td>ณัฐวุฒิ สุขใจ</td></tr>
-<tr><td>ม.1</td><td>1</td><td>พงศกร แก้วคำ</td></tr>
-<tr><td>ม.1</td><td>1</td><td>ภูวดล ศรีทอง</td></tr>
-<tr><td>ม.1</td><td>1</td><td>สิรภพ ใจดี</td></tr>
-<tr><td>ม.1</td><td>1</td><td>ธีรภัทร์ อินทร์ทอง</td></tr>
-<tr><td>ม.1</td><td>1</td><td>พีรณัฐ ศรีคำ</td></tr>
-<tr><td>ม.1</td><td>1</td><td>กรวิชญ์ สุขใจ</td></tr>
-<tr><td>ม.1</td><td>1</td><td>ณัฐพล ศรีวงศ์</td></tr>
-<tr><td>ม.1</td><td>1</td><td>ปกรณ์ บุญช่วย</td></tr>
-<tr><td>ม.1</td><td>1</td><td>จักรภัทร ใจกล้า</td></tr>
-<tr><td>ม.1</td><td>1</td><td>ธนวัฒน์ ใจงาม</td></tr>
-<tr><td>ม.1</td><td>1</td><td>วชิรวิทย์ ศรีคำ</td></tr>
-<tr><td>ม.1</td><td>1</td><td>ธนดล ศรีวงษ์</td></tr>
-<tr><td>ม.1</td><td>1</td><td>อรรถพล ชัยดี</td></tr>
 
-<!-- ม2 -->
-<tr><td>ม.2</td><td>1</td><td>กิตติศักดิ์ ทองมาก</td></tr>
-<tr><td>ม.2</td><td>1</td><td>พชรพล ทองดี</td></tr>
-<tr><td>ม.2</td><td>1</td><td>ธนภัทร สุขเกษม</td></tr>
-<tr><td>ม.2</td><td>1</td><td>กฤษดา ศรีทอง</td></tr>
-<tr><td>ม.2</td><td>1</td><td>ภูริพัฒน์ แก้วมา</td></tr>
-<tr><td>ม.2</td><td>1</td><td>ณรงค์ศักดิ์ ใจมั่น</td></tr>
-<tr><td>ม.2</td><td>1</td><td>ศุภชัย บุญมี</td></tr>
-<tr><td>ม.2</td><td>1</td><td>อภิวัฒน์ มั่นคง</td></tr>
-<tr><td>ม.2</td><td>1</td><td>ธันวา พรหมดี</td></tr>
-<tr><td>ม.2</td><td>1</td><td>วรเมธ อินทร์สุข</td></tr>
-<tr><td>ม.2</td><td>1</td><td>ณัฐพงษ์ วงศ์ดี</td></tr>
-<tr><td>ม.2</td><td>1</td><td>พิชญ์พล ชัยยะ</td></tr>
-<tr><td>ม.2</td><td>1</td><td>ณัฐวุฒิ สุขใจ</td></tr>
-<tr><td>ม.2</td><td>1</td><td>ภูวดล อินทร์แก้ว</td></tr>
-<tr><td>ม.2</td><td>1</td><td>สิรภพ บุญเลิศ</td></tr>
-<tr><td>ม.2</td><td>1</td><td>ธนดล ศรีวงษ์</td></tr>
-<tr><td>ม.2</td><td>1</td><td>อรรถพล ชัยดี</td></tr>
-<tr><td>ม.2</td><td>1</td><td>พชรพล ทองดี</td></tr>
-<tr><td>ม.2</td><td>1</td><td>จักรภัทร ใจกล้า</td></tr>
-<tr><td>ม.2</td><td>1</td><td>ธนภัทร สุขเกษม</td></tr>
+<!-- ม.1 ห้อง2 -->
 
-<!-- ม3 -->
-<tr><td>ม.3</td><td>1</td><td>วชิรวิทย์ ศรีคำ</td></tr>
-<tr><td>ม.3</td><td>1</td><td>กฤษดา ศรีทอง</td></tr>
-<tr><td>ม.3</td><td>1</td><td>กิตติศักดิ์ ทองมาก</td></tr>
-<tr><td>ม.3</td><td>1</td><td>พิชญ์พล ชัยยะ</td></tr>
-<tr><td>ม.3</td><td>1</td><td>ณรงค์ศักดิ์ ใจมั่น</td></tr>
-<tr><td>ม.3</td><td>1</td><td>ศุภชัย บุญมี</td></tr>
-<tr><td>ม.3</td><td>1</td><td>อภิวัฒน์ มั่นคง</td></tr>
-<tr><td>ม.3</td><td>1</td><td>ธันวา พรหมดี</td></tr>
-<tr><td>ม.3</td><td>1</td><td>วรเมธ อินทร์สุข</td></tr>
-<tr><td>ม.3</td><td>1</td><td>ณัฐพงษ์ วงศ์ดี</td></tr>
-<tr><td>ม.3</td><td>1</td><td>ภูวดล อินทร์แก้ว</td></tr>
-<tr><td>ม.3</td><td>1</td><td>สิรภพ บุญเลิศ</td></tr>
-<tr><td>ม.3</td><td>1</td><td>ธนดล ศรีวงษ์</td></tr>
-<tr><td>ม.3</td><td>1</td><td>อรรถพล ชัยดี</td></tr>
-<tr><td>ม.3</td><td>1</td><td>พชรพล ทองดี</td></tr>
-<tr><td>ม.3</td><td>1</td><td>จักรภัทร ใจกล้า</td></tr>
-<tr><td>ม.3</td><td>1</td><td>ธนภัทร สุขเกษม</td></tr>
-<tr><td>ม.3</td><td>1</td><td>วชิรวิทย์ ศรีคำ</td></tr>
-<tr><td>ม.3</td><td>1</td><td>กฤษดา ศรีทอง</td></tr>
+<tr><td>ม.1</td><td>2</td><td>ปกรณ์ แก้วคำ</td></tr>
+<tr><td>ม.1</td><td>2</td><td>ธีรภัทร์ อินทร์ทอง</td></tr>
+<tr><td>ม.1</td><td>2</td><td>พงศกร สุขดี</td></tr>
+<tr><td>ม.1</td><td>2</td><td>ณัฐพล ศรีวงศ์</td></tr>
+<tr><td>ม.1</td><td>2</td><td>กฤษฎา คำดี</td></tr>
+
+<!-- ม.2 -->
+
+<tr><td>ม.2</td><td>1</td><td>ศุภกร อินทร์ดี</td></tr>
+<tr><td>ม.2</td><td>1</td><td>ธนวัฒน์ ใจงาม</td></tr>
+<tr><td>ม.2</td><td>1</td><td>พีรณัฐ ศรีทอง</td></tr>
+<tr><td>ม.2</td><td>1</td><td>นครินทร์ แก้วดี</td></tr>
+<tr><td>ม.2</td><td>1</td><td>กรวิชญ์ สุขใจ</td></tr>
+
+<!-- ม.3 -->
+
+<tr><td>ม.3</td><td>1</td><td>ธีรเมธ ทองดี</td></tr>
+<tr><td>ม.3</td><td>1</td><td>พีรภัทร แสงดี</td></tr>
+<tr><td>ม.3</td><td>1</td><td>ธนากร อินทร์สวัสดิ์</td></tr>
+<tr><td>ม.3</td><td>1</td><td>วีรภัทร คำดี</td></tr>
+<tr><td>ม.3</td><td>1</td><td>ศุภณัฐ ใจบุญ</td></tr>
+
+<!-- ม.4 -->
+
+<tr><td>ม.4</td><td>1</td><td>กิตติศักดิ์ สุขใจ</td></tr>
 <tr><td>ม.4</td><td>1</td><td>ธนพล แสงดี</td></tr>
 <tr><td>ม.4</td><td>1</td><td>วรพล สุขสันต์</td></tr>
 <tr><td>ม.4</td><td>1</td><td>ปวริศ ทองคำ</td></tr>
 <tr><td>ม.4</td><td>1</td><td>อาทิตย์ ศรีงาม</td></tr>
+
+<!-- ม.5 -->
 
 <tr><td>ม.5</td><td>1</td><td>ภัทรดนัย ใจบุญ</td></tr>
 <tr><td>ม.5</td><td>1</td><td>กิตติศักดิ์ ทองสุข</td></tr>
@@ -116,16 +209,69 @@
 <tr><td>ม.5</td><td>1</td><td>ปริญญา ใจกล้า</td></tr>
 <tr><td>ม.5</td><td>1</td><td>ศิวกร แก้วสว่าง</td></tr>
 
+<!-- ม.6 -->
+
 <tr><td>ม.6</td><td>1</td><td>ธันวา สุขใจ</td></tr>
 <tr><td>ม.6</td><td>1</td><td>ภูมิพัฒน์ วงศ์ดี</td></tr>
 <tr><td>ม.6</td><td>1</td><td>ณัฐวุฒิ คำแสน</td></tr>
 <tr><td>ม.6</td><td>1</td><td>กฤตภาส ศรีทอง</td></tr>
 <tr><td>ม.6</td><td>1</td><td>นพดล ใจงาม</td></tr>
+
 </table>
 
 </div>
 
-<script src="script.js"></script>
+<script>
+
+/* เมนู */
+
+function toggleMenu(){
+
+document.getElementById("menu").classList.toggle("show")
+
+}
+
+/* ปิดเมนูเมื่อคลิกที่อื่น */
+
+document.addEventListener("click",function(e){
+
+let menu=document.getElementById("menu")
+let btn=document.querySelector(".menu-btn")
+
+if(!menu.contains(e.target)&&!btn.contains(e.target)){
+menu.classList.remove("show")
+}
+
+})
+
+/* ค้นหา */
+
+function searchName(){
+
+let input=document.getElementById("search")
+let filter=input.value.toLowerCase()
+
+let tr=document.querySelectorAll("#studentTable tr")
+
+for(let i=1;i<tr.length;i++){
+
+let name=tr[i].children[2].innerText.toLowerCase()
+
+tr[i].style.display=name.includes(filter)?"":"none"
+
+}
+
+}
+
+/* โหมดมืด */
+
+function toggleDark(){
+
+document.body.classList.toggle("dark")
+
+}
+
+</script>
 
 </body>
 </html>
