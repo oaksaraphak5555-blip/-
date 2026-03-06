@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>แชท</title>
 
@@ -14,25 +13,27 @@
 
 <body>
 
+<button class="theme-btn" onclick="toggleTheme()">🌙</button>
+
 <span class="menu-btn" onclick="openMenu()">☰</span>
 
 <div id="menu" class="sidebar">
 
 <a href="index.html">หน้าแรก</a>
 <a href="grades.html">คะแนน</a>
-<a href="activities.html">กิจกรรม</a>
 <a href="chat.html">แชท</a>
+<a href="activities.html">กิจกรรม</a>
 <a href="contact.html">ติดต่อ</a>
 
 </div>
 
-<div class="container">
+<div class="content">
 
-<h2>แชท</h2>
+<h2>ห้องแชท</h2>
 
-<div id="chatBox" class="chat-box"></div>
+<div class="chat-box">
 
-<div class="chat-input">
+<div id="messages" class="messages"></div>
 
 <input id="chatInput" placeholder="พิมพ์ข้อความ">
 
