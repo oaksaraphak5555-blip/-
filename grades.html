@@ -1,222 +1,56 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ระบบดูคะแนนนักเรียน</title>
+<meta name="viewport" content="width=device-width">
 
-<style>
+<title>คะแนน</title>
 
-body{
-margin:0;
-font-family:sans-serif;
-background:url("bg.jpg") no-repeat center center;
-background-size:cover;
-}
+<link rel="stylesheet" href="style.css">
 
-/* เมนู 3 ขีด */
-.menu-btn{
-font-size:30px;
-padding:10px;
-cursor:pointer;
-background:#333;
-color:white;
-position:fixed;
-top:10px;
-left:10px;
-border-radius:5px;
-}
-
-/* เมนูด้านข้าง */
-.sidebar{
-position:fixed;
-left:-250px;
-top:0;
-width:250px;
-height:100%;
-background:#222;
-transition:0.3s;
-padding-top:60px;
-}
-
-.sidebar a{
-display:block;
-color:white;
-padding:15px;
-text-decoration:none;
-}
-
-.sidebar a:hover{
-background:#444;
-}
-
-.sidebar.active{
-left:0;
-}
-
-/* เนื้อหา */
-.content{
-padding:20px;
-margin-top:60px;
-}
-
-/* ตาราง */
-table{
-width:100%;
-border-collapse:collapse;
-background:white;
-}
-
-th,td{
-border:1px solid #ccc;
-padding:8px;
-text-align:center;
-}
-
-th{
-background:#eee;
-}
-
-/* ช่องค้นหา */
-#search{
-padding:10px;
-width:100%;
-margin-bottom:10px;
-font-size:16px;
-}
-
-/* มือถือ */
-@media(max-width:768px){
-
-table{
-font-size:12px;
-}
-
-}
-
-</style>
 </head>
 
 <body>
 
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<span class="menu-btn" onclick="openMenu()">☰</span>
 
-<div class="sidebar" id="menu">
-<a href="#">หน้าแรก</a>
-<a href="#">ดูคะแนน</a>
-<a href="#">แชทพูดคุย</a>
+<div id="menu" class="sidebar">
+
+<a href="index.html">หน้าแรก</a>
+<a href="grades.html">คะแนน</a>
+<a href="activities.html">กิจกรรม</a>
+<a href="chat.html">แชท</a>
+<a href="contact.html">ติดต่อ</a>
+
 </div>
 
-<div class="content">
+<div class="container">
 
-<h2>ค้นหาชื่อนักเรียน</h2>
+<h2>รายชื่อนักเรียน</h2>
 
-<input type="text" id="search" placeholder="พิมพ์ชื่อ..." onkeyup="searchName()">
+<input id="search" onkeyup="searchName()" placeholder="ค้นหาชื่อ">
 
-<table id="gradeTable">
+<table id="studentTable">
 
-<thead>
 <tr>
-<th>ชื่อ</th>
+
 <th>ชั้น</th>
 <th>ห้อง</th>
-<th>คณิต</th>
-<th>วิทย์</th>
-<th>อังกฤษ</th>
+<th>ชื่อ</th>
+
 </tr>
-</thead>
 
-<tbody id="data">
-
-</tbody>
+<tr><td>ม.1</td><td>1</td><td>กิตติพงษ์ ใจดี</td></tr>
+<tr><td>ม.1</td><td>1</td><td>ธนกร พรหมมา</td></tr>
+<tr><td>ม.1</td><td>1</td><td>พีรพล แก้วทอง</td></tr>
+<tr><td>ม.1</td><td>1</td><td>ศุภชัย แสงทอง</td></tr>
 
 </table>
 
 </div>
 
-<script>
-
-function toggleMenu(){
-document.getElementById("menu").classList.toggle("active");
-}
-
-/* รายชื่อนักเรียน */
-
-let students=[];
-
-let names=[
-"กิตติ","สมชาย","ธีรภัทร","พงศกร","ธนกฤต",
-"ปกรณ์","ศุภชัย","วิชาญ","ธันวา","ก้องภพ",
-"ภูมิพัฒน์","ภาคภูมิ","นราธิป","ชัยวัฒน์","ภานุพงศ์"
-];
-
-for(let grade=1;grade<=6;grade++){
-
-for(let room=1;room<=3;room++){
-
-for(let i=0;i<15;i++){
-
-students.push({
-name:names[i]+" "+grade+room+i,
-grade:"ม."+grade,
-room:room,
-math:Math.floor(Math.random()*40)+60,
-sci:Math.floor(Math.random()*40)+60,
-eng:Math.floor(Math.random()*40)+60
-});
-
-}
-
-}
-
-}
-
-/* แสดงข้อมูล */
-
-function showData(){
-
-let table="";
-
-students.forEach(s=>{
-
-table+=`
-<tr>
-<td>${s.name}</td>
-<td>${s.grade}</td>
-<td>${s.room}</td>
-<td>${s.math}</td>
-<td>${s.sci}</td>
-<td>${s.eng}</td>
-</tr>
-`;
-
-});
-
-document.getElementById("data").innerHTML=table;
-
-}
-
-showData();
-
-/* ค้นหาชื่อ */
-
-function searchName(){
-
-let input=document.getElementById("search").value.toLowerCase();
-
-let rows=document.querySelectorAll("#gradeTable tbody tr");
-
-rows.forEach(row=>{
-
-let name=row.children[0].textContent.toLowerCase();
-
-row.style.display=name.includes(input)?"":"none";
-
-});
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
