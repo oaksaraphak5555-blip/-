@@ -1,45 +1,51 @@
 <!DOCTYPE html>
-<html lang="th">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>หน้าเกรด</title>
+<title>คะแนนนักเรียน</title>
+
 <link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+
 </head>
 
 <body>
 
-<nav>
-<a href="index.html">หน้าแรก</a>
-<a href="grade.html">ดูเกรด</a>
-<a href="chat.html">แชทห้อง</a>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<nav id="menu">
+<a href="index.html">หน้าหลัก</a>
+<a href="activities.html">กิจกรรม</a>
+<a href="grades.html">คะแนน</a>
+<a href="chat.html">แชท</a>
+<a href="contact.html">ติดต่อ</a>
 </nav>
 
-<h1>ตารางเกรด</h1>
+<div class="content">
+
+<h1>รายชื่อนักเรียน</h1>
 
 <input type="text" id="search" placeholder="ค้นหาชื่อ..." onkeyup="searchName()">
 
-<table id="gradeTable">
+<table id="studentTable">
 
 <tr>
-<th>เลขที่</th>
+<th>ห้อง</th>
 <th>ชื่อ</th>
-<th>เกรด</th>
+<th>คะแนน</th>
 </tr>
 
-<tr><td>1</td><td>กิตติ</td><td>A</td></tr>
-<tr><td>2</td><td>ธนา</td><td>B+</td></tr>
-<tr><td>3</td><td>วีระ</td><td>B</td></tr>
-<tr><td>4</td><td>ปกรณ์</td><td>A</td></tr>
-<tr><td>5</td><td>ศิริ</td><td>C+</td></tr>
-<tr><td>6</td><td>ณัฐ</td><td>B</td></tr>
-<tr><td>7</td><td>ภัทร</td><td>A</td></tr>
-<tr><td>8</td><td>ธีร</td><td>B+</td></tr>
-<tr><td>9</td><td>วรพล</td><td>C</td></tr>
-<tr><td>10</td><td>กานต์</td><td>A</td></tr>
+<tr><td>ม1</td><td>กิตติพงษ์ ใจดี</td><td>80</td></tr>
+<tr><td>ม1</td><td>สมชาย ดีมาก</td><td>75</td></tr>
+<tr><td>ม2</td><td>วรพล แสงทอง</td><td>90</td></tr>
+<tr><td>ม3</td><td>ธนกร สุขใจ</td><td>88</td></tr>
+<tr><td>ม4</td><td>ธนชัย ดีเลิศ</td><td>82</td></tr>
+<tr><td>ม5</td><td>สุพจน์ ศรีทอง</td><td>77</td></tr>
+<tr><td>ม6</td><td>ปกรณ์ เก่งมาก</td><td>95</td></tr>
 
 </table>
 
-<script src="script.js"></script>
+</div>
 
 </body>
 </html>
