@@ -1,78 +1,75 @@
 body{
-  margin:0;
-  font-family:"Sarabun",sans-serif;
-  background: linear-gradient(135deg,#4facfe,#00f2fe);
+margin:0;
+font-family:Tahoma;
+color:white;
+
+/* พื้นหลัง */
+background-image:url("background.jpg");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
 }
 
+/* เมนู */
 .menu-btn{
-  font-size:30px;
-  color:white;
-  padding:15px;
-  cursor:pointer;
+font-size:30px;
+position:fixed;
+top:10px;
+left:15px;
+cursor:pointer;
+z-index:1000;
 }
 
 .sidebar{
-  position:fixed;
-  left:-260px;
-  top:0;
-  width:250px;
-  height:100%;
-  background:linear-gradient(180deg,#2c5364,#203a43,#0f2027);
-  padding-top:60px;
-  transition:0.4s;
+height:100%;
+width:200px;
+position:fixed;
+left:-200px;
+top:0;
+background:#333;
+padding-top:60px;
+transition:0.3s;
 }
 
 .sidebar a{
-  display:block;
-  color:white;
-  padding:15px;
-  text-decoration:none;
+display:block;
+color:white;
+padding:10px;
+text-decoration:none;
 }
 
 .sidebar a:hover{
-  background:rgba(255,255,255,0.2);
+background:#555;
 }
 
-.sidebar.active{
-  left:0;
-}
-
+/* กล่องเนื้อหา */
 .container{
-  padding:30px;
+margin-left:20px;
+padding:60px 20px;
 }
 
 .card{
-  background:white;
-  padding:20px;
-  margin-bottom:20px;
-  border-radius:15px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+background:rgba(0,0,0,0.6);
+padding:20px;
+margin:20px 0;
+border-radius:10px;
 }
 
-.card h3{
-  background:#4facfe;
-  color:white;
-  padding:10px;
-  border-radius:10px;
-}
-
+/* ตาราง */
 table{
-  width:100%;
-  border-collapse:collapse;
+width:100%;
+border-collapse:collapse;
+background:white;
+color:black;
 }
 
 th,td{
-  padding:10px;
-  border:1px solid #ddd;
+border:1px solid #ccc;
+padding:8px;
+text-align:center;
 }
 
 th{
-  background:#4facfe;
-  color:white;
-}
-
-input{
-  padding:8px;
-  width:100%;
-  max-width:300px;
+background:#4CAF50;
+color:white;
 }
