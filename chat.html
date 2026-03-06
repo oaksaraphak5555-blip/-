@@ -1,36 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
+
 <head>
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+
 <title>แชท</title>
 
 <link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
 
 </head>
 
 <body>
 
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<span class="menu-btn" onclick="openMenu()">☰</span>
 
-<nav id="menu">
-<a href="index.html">หน้าหลัก</a>
-<a href="activities.html">กิจกรรม</a>
+<div id="menu" class="sidebar">
+
+<a href="index.html">หน้าแรก</a>
 <a href="grades.html">คะแนน</a>
+<a href="activities.html">กิจกรรม</a>
 <a href="chat.html">แชท</a>
 <a href="contact.html">ติดต่อ</a>
-</nav>
-
-<div class="content">
-
-<h1>ห้องแชท</h1>
-
-<div id="chatBox"></div>
-
-<input id="msg" placeholder="พิมพ์ข้อความ">
-<button onclick="sendMsg()">ส่ง</button>
 
 </div>
+
+<div class="container">
+
+<h2>แชท</h2>
+
+<div id="chatBox" class="chat-box"></div>
+
+<div class="chat-input">
+
+<input id="chatInput" placeholder="พิมพ์ข้อความ">
+
+<button onclick="sendMessage()">ส่ง</button>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
