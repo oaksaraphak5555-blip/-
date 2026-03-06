@@ -1,156 +1,57 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ติดต่อโรงเรียน</title>
+<title>ติดต่อ</title>
 
-<style>
+<link rel="stylesheet" href="style.css">
 
-body{
-margin:0;
-font-family:Arial;
-background:#f4f4f4;
-transition:0.3s;
-}
-
-.dark{
-background:#121212;
-color:white;
-}
-
-.menu-btn{
-font-size:28px;
-padding:10px 15px;
-background:#333;
-color:white;
-cursor:pointer;
-position:fixed;
-top:10px;
-left:10px;
-}
-
-.dark-btn{
-position:fixed;
-top:10px;
-right:15px;
-padding:8px 14px;
-border:none;
-background:#333;
-color:white;
-cursor:pointer;
-}
-
-.sidebar{
-position:fixed;
-left:-250px;
-top:0;
-width:250px;
-height:100%;
-background:#222;
-transition:0.3s;
-padding-top:60px;
-}
-
-.sidebar a{
-display:block;
-padding:12px 20px;
-color:white;
-text-decoration:none;
-}
-
-.sidebar a:hover{
-background:#444;
-}
-
-.sidebar.show{
-left:0;
-}
-
-.content{
-padding:80px 20px;
-text-align:center;
-}
-
-.box{
-background:white;
-padding:20px;
-width:80%;
-margin:auto;
-border-radius:10px;
-}
-
-.dark .box{
-background:#1e1e1e;
-}
-
-input,textarea{
-width:90%;
-padding:10px;
-margin:10px 0;
-}
-
-button{
-padding:10px 20px;
-background:#4CAF50;
-border:none;
-color:white;
-cursor:pointer;
-}
-
-</style>
 </head>
 
 <body>
 
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
 <button class="dark-btn" onclick="toggleDark()">🌙</button>
 
-<div id="menu" class="sidebar">
+<div class="sidebar" id="menu">
 
 <a href="index.html">หน้าหลัก</a>
-<a href="grades.html">คะแนน</a>
-<a href="activity.html">กิจกรรม</a>
+<a href="grades.html">เกรด</a>
+<a href="activities.html">กิจกรรม</a>
 <a href="contact.html">ติดต่อ</a>
 
 </div>
 
-<div class="content">
+<div class="container">
+
+<div class="card">
 
 <h2>ติดต่อโรงเรียน</h2>
 
-<div class="box">
+<p>โทร : 099-999-9999</p>
 
-<p>โทร : 080-000-0000</p>
 <p>Email : school@email.com</p>
 
-<h3>ส่งข้อความ</h3>
+</div>
 
-<input type="text" placeholder="ชื่อ">
+<div class="card">
 
-<input type="email" placeholder="อีเมล">
+<h3>แชทครู / นักเรียน</h3>
 
-<textarea placeholder="ข้อความ"></textarea>
+<div class="chat-box" id="chatBox"></div>
 
-<br>
+<input id="chatInput" class="chat-input">
 
-<button>ส่งข้อความ</button>
+<button onclick="sendChat()" class="chat-btn">ส่ง</button>
 
 </div>
 
 </div>
 
-<script>
-
-function toggleMenu(){
-document.getElementById("menu").classList.toggle("show")
-}
-
-function toggleDark(){
-document.body.classList.toggle("dark")
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
