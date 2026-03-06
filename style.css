@@ -1,61 +1,137 @@
 body{
 margin:0;
-font-family:sans-serif;
+font-family:Tahoma;
+color:white;
 
-background-image:url("background.jpg");
+/* พื้นหลัง */
+background-image:url("pmt.jpg");
 background-size:cover;
 background-position:center;
 background-repeat:no-repeat;
 background-attachment:fixed;
-
-color:white;
 }
 
+/* ปุ่มเมนู */
 .menu-btn{
-font-size:30px;
-padding:10px;
+font-size:32px;
+position:fixed;
+top:10px;
+left:15px;
 cursor:pointer;
-}
-
-nav{
-display:none;
-background:black;
-padding:10px;
-}
-
-nav a{
-color:white;
-margin:10px;
-text-decoration:none;
-}
-
-nav.show{
-display:block;
-}
-
-.content{
+z-index:1000;
 background:rgba(0,0,0,0.5);
-padding:20px;
-margin:20px;
+padding:6px 12px;
+border-radius:6px;
 }
+
+/* ปุ่มโหมดมืด */
+
+.dark-btn{
+position:fixed;
+top:10px;
+right:15px;
+padding:6px 12px;
+border:none;
+border-radius:6px;
+background:black;
+color:white;
+cursor:pointer;
+z-index:1000;
+}
+
+/* เมนูด้านข้าง */
+
+.sidebar{
+height:100%;
+width:220px;
+position:fixed;
+left:-220px;
+top:0;
+background:#222;
+padding-top:60px;
+transition:0.3s;
+z-index:999;
+}
+
+.sidebar a{
+display:block;
+color:white;
+padding:14px;
+text-decoration:none;
+font-size:18px;
+}
+
+.sidebar a:hover{
+background:#444;
+}
+
+/* กล่องเนื้อหา */
+
+.container{
+margin-left:20px;
+padding:70px 20px;
+}
+
+.card{
+background:rgba(0,0,0,0.6);
+padding:20px;
+margin:20px 0;
+border-radius:12px;
+}
+
+/* ตาราง */
 
 table{
 width:100%;
+border-collapse:collapse;
 background:white;
 color:black;
-border-collapse:collapse;
 }
 
 th,td{
-border:1px solid black;
-padding:10px;
+border:1px solid #ccc;
+padding:8px;
+text-align:center;
 }
 
-#chatBox{
-background:white;
-color:black;
-height:200px;
-overflow:auto;
-margin-bottom:10px;
-padding:10px;
+th{
+background:#4CAF50;
+color:white;
+}
+
+/* Dark Mode */
+
+.dark{
+background:#111;
+}
+
+.dark .card{
+background:rgba(255,255,255,0.1);
+}
+
+.dark table{
+background:#222;
+color:white;
+}
+
+.dark th{
+background:#333;
+}
+
+.dark td{
+background:#444;
+}
+
+/* มือถือ */
+
+@media(max-width:600px){
+
+.card{
+font-size:14px;
+}
+
+table{
+font-size:12px;
+}
+
 }
