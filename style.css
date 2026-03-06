@@ -1,87 +1,49 @@
+/* พื้นหลังเว็บ */
 body{
-margin:0;
-font-family:Tahoma;
-color:white;
+    margin:0;
+    padding:0;
+    font-family: Arial, sans-serif;
 
-/* พื้นหลัง */
-background-image:url("background.jpg");
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
-}
-
-/* ทำพื้นหลังมืดอ่านง่าย */
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.4);
-z-index:-1;
-}
-
-/* เมนู */
-.menu-btn{
-font-size:30px;
-position:fixed;
-top:10px;
-left:15px;
-cursor:pointer;
-z-index:1000;
-}
-
-.sidebar{
-height:100%;
-width:200px;
-position:fixed;
-left:-200px;
-top:0;
-background:#333;
-padding-top:60px;
-transition:0.3s;
-}
-
-.sidebar a{
-display:block;
-color:white;
-padding:10px;
-text-decoration:none;
-}
-
-.sidebar a:hover{
-background:#555;
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* กล่องเนื้อหา */
 .container{
-margin-left:20px;
-padding:60px 20px;
+    width:80%;
+    margin:auto;
+    margin-top:50px;
+
+    background: rgba(0,0,0,0.6);
+    color:white;
+
+    padding:20px;
+    border-radius:10px;
 }
 
-.card{
-background:rgba(0,0,0,0.6);
-padding:20px;
-margin:20px 0;
-border-radius:10px;
+/* หัวข้อ */
+h1{
+    text-align:center;
 }
 
-/* ตาราง */
-table{
-width:100%;
-border-collapse:collapse;
-background:white;
-color:black;
+/* เมนู */
+nav{
+    text-align:center;
+    margin-top:20px;
 }
 
-th,td{
-border:1px solid #ccc;
-padding:8px;
-text-align:center;
+nav a{
+    text-decoration:none;
+    color:white;
+    background:#007bff;
+    padding:10px 15px;
+    margin:5px;
+    border-radius:5px;
 }
 
-th{
-background:#4CAF50;
-color:white;
+/* เวลาชี้เมาส์ */
+nav a:hover{
+    background:#0056b3;
 }
