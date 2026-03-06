@@ -1,30 +1,46 @@
-function toggleMenu(){
-let menu = document.getElementById("menu");
+function searchName(){
 
-if(menu.style.left === "0px"){
-menu.style.left = "-200px";
+let input=document.getElementById("search").value.toLowerCase();
+let table=document.getElementById("gradeTable");
+let tr=table.getElementsByTagName("tr");
+
+for(let i=1;i<tr.length;i++){
+
+let td=tr[i].getElementsByTagName("td")[1];
+
+if(td){
+
+let txt=td.textContent.toLowerCase();
+
+if(txt.includes(input)){
+
+tr[i].style.display="";
+
 }else{
-menu.style.left = "0px";
-}
-}
 
-function searchStudent(){
+tr[i].style.display="none";
 
-let input = document.getElementById("searchInput");
-let filter = input.value.toLowerCase();
-
-let rows = document.querySelectorAll("tbody tr");
-
-rows.forEach(function(row){
-
-let name = row.cells[1].innerText.toLowerCase();
-
-if(name.includes(filter)){
-row.style.display="";
-}else{
-row.style.display="none";
 }
 
-});
+}
+
+}
+
+}
+
+function sendMsg(){
+
+let input=document.getElementById("chatInput");
+let msg=input.value;
+
+if(msg==="")return;
+
+let div=document.createElement("div");
+
+div.textContent=msg;
+
+document.getElementById("messages").appendChild(div);
+
+input.value="";
 
 }
