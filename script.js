@@ -1,79 +1,89 @@
-function openMenu(){
+function toggleMenu(){
 
-let menu = document.getElementById("menu");
+let menu=document.getElementById("menu");
 
-if(menu.style.width === "250px"){
-menu.style.width="0";
+if(menu.style.left==="0px"){
+menu.style.left="-250px";
 }else{
-menu.style.width="250px";
+menu.style.left="0px";
 }
 
 }
 
-/* กดที่อื่นปิดเมนู */
+/* ปิดเมนูเมื่อกดพื้นที่อื่น */
 
 document.addEventListener("click",function(e){
 
-let menu = document.getElementById("menu");
-let btn = document.querySelector(".menu-btn");
+let menu=document.getElementById("menu");
 
-if(menu.style.width==="250px"){
-
-if(!menu.contains(e.target) && !btn.contains(e.target)){
-menu.style.width="0";
+if(!menu.contains(e.target) && !e.target.classList.contains("menu-btn")){
+menu.style.left="-250px";
 }
 
+})
+
+/* DARK MODE */
+
+function toggleDark(){
+
+document.body.classList.toggle("dark");
+
 }
 
-});
+/* CHAT */
 
-/* โหมดมืด */
+function sendChat(){
 
-function toggleTheme(){
-document.body.classList.toggle("dark-mode");
-}
+let input=document.getElementById("chatInput")
+let box=document.getElementById("chatBox")
 
-/* ค้นหาชื่อ */
+if(input.value!=""){
 
-function searchName(){
+let p=document.createElement("p")
+p.textContent=input.value
 
-let input=document.getElementById("search");
-let filter=input.value.toLowerCase();
-let tr=document.querySelectorAll("#studentTable tr");
+box.appendChild(p)
 
-for(let i=1;i<tr.length;i++){
-
-let td=tr[i].getElementsByTagName("td")[2];
-
-if(td){
-
-let txt=td.textContent;
-
-tr[i].style.display=
-txt.toLowerCase().indexOf(filter)>-1 ? "" : "none";
+input.value=""
 
 }
 
 }
 
-}
+/* SEARCH STUDENT */
 
-/* แชท */
+function searchStudent(){
 
-function sendMessage(){
+let input=document.getElementById("searchInput").value.toLowerCase()
+let rows=document.querySelectorAll("tbody tr")
 
-let input=document.getElementById("chatInput");
-let msg=input.value;
+rows.forEach(row=>{
 
-if(msg.trim()!==""){
+let name=row.children[2].textContent.toLowerCase()
 
-let div=document.createElement("div");
-div.textContent=msg;
+row.style.display=name.includes(input)?"":"none"
 
-document.getElementById("messages").appendChild(div);
-
-input.value="";
+})
 
 }
 
+/* NEWS SYSTEM */
+
+function addNews(){
+
+let input=document.getElementById("newsInput")
+let list=document.getElementById("newsList")
+
+if(input.value!=""){
+
+let li=document.createElement("li")
+
+li.innerHTML=input.value+" <button onclick='this.parentElement.remove()'>ลบ</button>"
+
+list.appendChild(li)
+
+input.value=""
+
 }
+
+  }
