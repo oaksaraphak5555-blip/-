@@ -1,38 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
+
 <meta charset="UTF-8">
-<title>กิจกรรม</title>
+<meta name="viewport" content="width=device-width">
+
+<title>กิจกรรมโรงเรียน</title>
 
 <link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
 
 </head>
 
 <body>
 
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<span class="menu-btn" onclick="openMenu()">☰</span>
 
-<nav id="menu">
-<a href="index.html">หน้าหลัก</a>
-<a href="activities.html">กิจกรรม</a>
+<div id="menu" class="sidebar">
+
+<a href="index.html">หน้าแรก</a>
 <a href="grades.html">คะแนน</a>
+<a href="activities.html">กิจกรรม</a>
 <a href="chat.html">แชท</a>
 <a href="contact.html">ติดต่อ</a>
-</nav>
 
-<div class="content">
+<a onclick="toggleDark()">โหมดมืด</a>
+
+</div>
+
+<div class="container">
 
 <h1>กิจกรรมโรงเรียน</h1>
 
-<ul>
-<li>กีฬาสี</li>
-<li>แข่งขันวิชาการ</li>
-<li>กิจกรรมลูกเสือ</li>
-<li>ทัศนศึกษา</li>
-</ul>
+<div class="news-box">
+<h3>🏃 กีฬาสี</h3>
+<p>จัดขึ้นวันที่ 20 กรกฎาคม นักเรียนทุกคนเข้าร่วม</p>
+</div>
+
+<div class="news-box">
+<h3>📚 สอบกลางภาค</h3>
+<p>ช่วงวันที่ 10 - 15 สิงหาคม</p>
+</div>
+
+<div class="news-box">
+<h3>🌳 กิจกรรมจิตอาสา</h3>
+<p>นักเรียน ม.4 - ม.6 ทำกิจกรรมปลูกต้นไม้</p>
+</div>
 
 </div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
