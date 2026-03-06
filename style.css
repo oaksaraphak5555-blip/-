@@ -1,49 +1,77 @@
-/* พื้นหลังเว็บ */
 body{
-    margin:0;
-    padding:0;
-    font-family: Arial, sans-serif;
 
-    background-image: url("background.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+margin:0;
+font-family:Arial;
+
+background-image:url("background.jpg");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+color:white;
+text-align:center;
+
 }
 
-/* กล่องเนื้อหา */
-.container{
-    width:80%;
-    margin:auto;
-    margin-top:50px;
-
-    background: rgba(0,0,0,0.6);
-    color:white;
-
-    padding:20px;
-    border-radius:10px;
-}
-
-/* หัวข้อ */
-h1{
-    text-align:center;
-}
-
-/* เมนู */
 nav{
-    text-align:center;
-    margin-top:20px;
+
+background:#00000088;
+padding:15px;
+
 }
 
 nav a{
-    text-decoration:none;
-    color:white;
-    background:#007bff;
-    padding:10px 15px;
-    margin:5px;
-    border-radius:5px;
+
+color:white;
+margin:10px;
+text-decoration:none;
+font-size:18px;
+
 }
 
-/* เวลาชี้เมาส์ */
-nav a:hover{
-    background:#0056b3;
+table{
+
+margin:auto;
+border-collapse:collapse;
+background:#000000aa;
+
+}
+
+th,td{
+
+border:1px solid white;
+padding:10px;
+
+}
+
+.chatbox{
+
+width:300px;
+margin:auto;
+background:#000000aa;
+padding:10px;
+border-radius:10px;
+
+}
+
+#messages{
+
+height:200px;
+overflow-y:auto;
+border:1px solid white;
+margin-bottom:10px;
+padding:5px;
+
+}
+
+input{
+
+padding:8px;
+
+}
+
+button{
+
+padding:8px;
+
 }
