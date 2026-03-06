@@ -1,34 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
+
 <meta charset="UTF-8">
-<title>ติดต่อ</title>
+<meta name="viewport" content="width=device-width">
+
+<title>ติดต่อ / สมัครเรียน</title>
 
 <link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
 
 </head>
 
 <body>
 
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<span class="menu-btn" onclick="openMenu()">☰</span>
 
-<nav id="menu">
-<a href="index.html">หน้าหลัก</a>
-<a href="activities.html">กิจกรรม</a>
+<div id="menu" class="sidebar">
+
+<a href="index.html">หน้าแรก</a>
 <a href="grades.html">คะแนน</a>
+<a href="activities.html">กิจกรรม</a>
 <a href="chat.html">แชท</a>
 <a href="contact.html">ติดต่อ</a>
-</nav>
 
-<div class="content">
+<a onclick="toggleDark()">โหมดมืด</a>
+
+</div>
+
+<div class="container">
 
 <h1>ติดต่อโรงเรียน</h1>
 
-<p>โทร: 0123456789</p>
-<p>Email: school@email.com</p>
+<p>📍 ที่อยู่ : โรงเรียนตัวอย่าง</p>
+<p>📞 โทร : 012-345-6789</p>
+<p>📧 Email : school@example.com</p>
+
+<hr>
+
+<h2>สมัครเรียน</h2>
+
+<form>
+
+<input type="text" placeholder="ชื่อ - นามสกุล"><br><br>
+
+<input type="text" placeholder="ระดับชั้นที่สมัคร"><br><br>
+
+<input type="tel" placeholder="เบอร์โทร"><br><br>
+
+<button type="submit">ส่งใบสมัคร</button>
+
+</form>
 
 </div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
