@@ -2,73 +2,42 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>คะแนนนักเรียน</title>
+<title>หน้าเกรด</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<nav>
+<a href="index.html">หน้าแรก</a>
+<a href="grade.html">ดูเกรด</a>
+<a href="chat.html">แชทห้อง</a>
+</nav>
 
-<div class="sidebar" id="menu">
-<a href="index.html">หน้าหลัก</a>
-<a href="activities.html">กิจกรรม</a>
-<a href="grades.html">คะแนน</a>
-<a href="contact.html">ติดต่อ</a>
-</div>
+<h1>ตารางเกรด</h1>
 
-<div class="container" id="container">
+<input type="text" id="search" placeholder="ค้นหาชื่อ..." onkeyup="searchName()">
 
-<div class="card">
-<h3>ค้นหาชื่อนักเรียน</h3>
-<input type="text" id="searchInput" onkeyup="searchStudent()" placeholder="พิมพ์ชื่อ...">
-</div>
+<table id="gradeTable">
 
-<div class="card">
-<h3>ตัวอย่างคะแนน</h3>
-
-<table>
-<thead>
 <tr>
 <th>เลขที่</th>
 <th>ชื่อ</th>
-<th>คะแนน</th>
-</tr>
-</thead>
-
-<tbody>
-
-<tr>
-<td>1</td>
-<td>กิตติพงศ์ ใจดี</td>
-<td>85</td>
+<th>เกรด</th>
 </tr>
 
-<tr>
-<td>2</td>
-<td>ธนกร ศรีสุข</td>
-<td>78</td>
-</tr>
-
-<tr>
-<td>3</td>
-<td>ปิยวัฒน์ คำแสน</td>
-<td>92</td>
-</tr>
-
-<tr>
-<td>4</td>
-<td>นภัสกร ชัยทอง</td>
-<td>80</td>
-</tr>
-
-</tbody>
+<tr><td>1</td><td>กิตติ</td><td>A</td></tr>
+<tr><td>2</td><td>ธนา</td><td>B+</td></tr>
+<tr><td>3</td><td>วีระ</td><td>B</td></tr>
+<tr><td>4</td><td>ปกรณ์</td><td>A</td></tr>
+<tr><td>5</td><td>ศิริ</td><td>C+</td></tr>
+<tr><td>6</td><td>ณัฐ</td><td>B</td></tr>
+<tr><td>7</td><td>ภัทร</td><td>A</td></tr>
+<tr><td>8</td><td>ธีร</td><td>B+</td></tr>
+<tr><td>9</td><td>วรพล</td><td>C</td></tr>
+<tr><td>10</td><td>กานต์</td><td>A</td></tr>
 
 </table>
-
-</div>
-
-</div>
 
 <script src="script.js"></script>
 
