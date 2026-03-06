@@ -1,8 +1,8 @@
 function openMenu(){
 
-let menu=document.getElementById("menu");
+let menu = document.getElementById("menu");
 
-if(menu.style.width=="250px"){
+if(menu.style.width === "250px"){
 menu.style.width="0";
 }else{
 menu.style.width="250px";
@@ -10,30 +10,48 @@ menu.style.width="250px";
 
 }
 
+/* กดที่อื่นปิดเมนู */
+
+document.addEventListener("click",function(e){
+
+let menu = document.getElementById("menu");
+let btn = document.querySelector(".menu-btn");
+
+if(menu.style.width==="250px"){
+
+if(!menu.contains(e.target) && !btn.contains(e.target)){
+menu.style.width="0";
+}
+
+}
+
+});
+
 /* โหมดมืด */
 
-function toggleDark(){
-
-document.body.classList.toggle("dark");
-
+function toggleTheme(){
+document.body.classList.toggle("dark-mode");
 }
 
 /* ค้นหาชื่อ */
 
 function searchName(){
 
-let input=document.getElementById("search").value.toLowerCase()
-
-let tr=document.querySelectorAll("#studentTable tr")
+let input=document.getElementById("search");
+let filter=input.value.toLowerCase();
+let tr=document.querySelectorAll("#studentTable tr");
 
 for(let i=1;i<tr.length;i++){
 
-let name=tr[i].children[2].innerText.toLowerCase()
+let td=tr[i].getElementsByTagName("td")[2];
 
-if(name.includes(input)){
-tr[i].style.display=""
-}else{
-tr[i].style.display="none"
+if(td){
+
+let txt=td.textContent;
+
+tr[i].style.display=
+txt.toLowerCase().indexOf(filter)>-1 ? "" : "none";
+
 }
 
 }
@@ -44,21 +62,17 @@ tr[i].style.display="none"
 
 function sendMessage(){
 
-let input=document.getElementById("chatInput")
+let input=document.getElementById("chatInput");
+let msg=input.value;
 
-let box=document.getElementById("chatBox")
+if(msg.trim()!==""){
 
-if(input.value!=""){
+let div=document.createElement("div");
+div.textContent=msg;
 
-let p=document.createElement("p")
+document.getElementById("messages").appendChild(div);
 
-p.textContent=input.value
-
-box.appendChild(p)
-
-input.value=""
-
-box.scrollTop=box.scrollHeight
+input.value="";
 
 }
 
