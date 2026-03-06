@@ -1,82 +1,55 @@
 body{
 margin:0;
-font-family:Tahoma;
-color:white;
-
-/* พื้นหลัง */
-background-image:url("pmt.jpg");
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-background-attachment:fixed;
+font-family:sans-serif;
+background:#f4f4f4;
+color:#222;
+transition:0.3s;
 }
 
-/* ปุ่มเมนู */
+/* โหมดมืด */
+
+.dark{
+background:#121212;
+color:white;
+}
+
+/* เมนู */
+
 .menu-btn{
-font-size:32px;
-position:fixed;
-top:10px;
-left:15px;
+font-size:28px;
+padding:10px 15px;
 cursor:pointer;
-z-index:1000;
-background:rgba(0,0,0,0.5);
-padding:6px 12px;
-border-radius:6px;
-}
-
-/* ปุ่มโหมดมืด */
-
-.dark-btn{
-position:fixed;
-top:10px;
-right:15px;
-padding:6px 12px;
-border:none;
-border-radius:6px;
-background:black;
+background:#222;
 color:white;
-cursor:pointer;
-z-index:1000;
 }
-
-/* เมนูด้านข้าง */
 
 .sidebar{
-height:100%;
-width:220px;
 position:fixed;
-left:-220px;
+left:0;
 top:0;
+height:100%;
+width:0;
 background:#222;
-padding-top:60px;
+overflow:hidden;
 transition:0.3s;
-z-index:999;
+padding-top:60px;
 }
 
 .sidebar a{
 display:block;
 color:white;
-padding:14px;
+padding:12px 20px;
 text-decoration:none;
-font-size:18px;
 }
 
 .sidebar a:hover{
 background:#444;
 }
 
-/* กล่องเนื้อหา */
+/* เนื้อหา */
 
 .container{
-margin-left:20px;
-padding:70px 20px;
-}
-
-.card{
-background:rgba(0,0,0,0.6);
 padding:20px;
-margin:20px 0;
-border-radius:12px;
 }
 
 /* ตาราง */
@@ -85,12 +58,11 @@ table{
 width:100%;
 border-collapse:collapse;
 background:white;
-color:black;
 }
 
 th,td{
+padding:10px;
 border:1px solid #ccc;
-padding:8px;
 text-align:center;
 }
 
@@ -99,39 +71,54 @@ background:#4CAF50;
 color:white;
 }
 
-/* Dark Mode */
+/* ช่องค้นหา */
 
-.dark{
-background:#111;
+input{
+padding:10px;
+width:250px;
+margin:10px;
 }
 
-.dark .card{
-background:rgba(255,255,255,0.1);
+/* กล่องข่าว */
+
+.news-box{
+background:white;
+padding:15px;
+margin:10px 0;
+border-radius:6px;
+box-shadow:0 0 5px rgba(0,0,0,0.1);
 }
 
-.dark table{
-background:#222;
-color:white;
+/* แชท */
+
+.chat-box{
+height:300px;
+overflow:auto;
+border:1px solid #ccc;
+padding:10px;
+margin-bottom:10px;
+background:white;
 }
 
-.dark th{
-background:#333;
+.chat-input{
+display:flex;
 }
 
-.dark td{
-background:#444;
+.chat-input input{
+flex:1;
+}
+
+button{
+padding:10px 15px;
+cursor:pointer;
 }
 
 /* มือถือ */
 
 @media(max-width:600px){
 
-.card{
-font-size:14px;
-}
-
-table{
-font-size:12px;
+input{
+width:90%;
 }
 
 }
