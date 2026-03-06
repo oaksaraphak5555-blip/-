@@ -1,35 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>เว็บไซต์โรงเรียน</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>หน้าแรก</title>
 
 <link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
-
 </head>
 
 <body>
 
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<span class="menu-btn" onclick="openMenu()">☰</span>
 
-<nav id="menu">
-<a href="index.html">หน้าหลัก</a>
-<a href="activities.html">กิจกรรม</a>
+<div id="menu" class="sidebar">
+
+<a href="index.html">หน้าแรก</a>
 <a href="grades.html">คะแนน</a>
+<a href="activities.html">กิจกรรม</a>
 <a href="chat.html">แชท</a>
 <a href="contact.html">ติดต่อ</a>
-</nav>
 
-<div class="content">
-
-<h1>ยินดีต้อนรับ</h1>
-<p>เว็บไซต์ข้อมูลโรงเรียน</p>
-
-<p>มีระดับชั้น ม.1 - ม.6</p>
-<p>ระบบคะแนนและแชท</p>
+<a onclick="toggleDark()">โหมดมืด</a>
 
 </div>
+
+<div class="container">
+
+<h1>ข่าวโรงเรียน</h1>
+
+<div class="news-box">
+<h3>📢 ประกาศ</h3>
+<p>สัปดาห์นี้มีการแข่งขันกีฬาสี</p>
+</div>
+
+<div class="news-box">
+<h3>📢 กิจกรรม</h3>
+<p>วันศุกร์มีการสอบกลางภาค</p>
+</div>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
