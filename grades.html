@@ -1,27 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>คะแนนนักเรียน</title>
+<title>หน้าเกรดนักเรียน</title>
 
-<link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
+<style>
 
+body{
+font-family: Arial;
+background:#f4f4f4;
+text-align:center;
+}
+
+h1{
+margin-top:20px;
+}
+
+input{
+padding:10px;
+width:300px;
+margin:20px;
+}
+
+table{
+margin:auto;
+border-collapse:collapse;
+width:80%;
+background:white;
+}
+
+th,td{
+border:1px solid #ccc;
+padding:10px;
+}
+
+th{
+background:#4CAF50;
+color:white;
+}
+
+</style>
 </head>
 
 <body>
-
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
-
-<nav id="menu">
-<a href="index.html">หน้าหลัก</a>
-<a href="activities.html">กิจกรรม</a>
-<a href="grades.html">คะแนน</a>
-<a href="chat.html">แชท</a>
-<a href="contact.html">ติดต่อ</a>
-</nav>
-
-<div class="content">
 
 <h1>รายชื่อนักเรียน</h1>
 
@@ -30,22 +51,89 @@
 <table id="studentTable">
 
 <tr>
+<th>ระดับ</th>
 <th>ห้อง</th>
 <th>ชื่อ</th>
-<th>คะแนน</th>
 </tr>
 
-<tr><td>ม1</td><td>กิตติพงษ์ ใจดี</td><td>80</td></tr>
-<tr><td>ม1</td><td>สมชาย ดีมาก</td><td>75</td></tr>
-<tr><td>ม2</td><td>วรพล แสงทอง</td><td>90</td></tr>
-<tr><td>ม3</td><td>ธนกร สุขใจ</td><td>88</td></tr>
-<tr><td>ม4</td><td>ธนชัย ดีเลิศ</td><td>82</td></tr>
-<tr><td>ม5</td><td>สุพจน์ ศรีทอง</td><td>77</td></tr>
-<tr><td>ม6</td><td>ปกรณ์ เก่งมาก</td><td>95</td></tr>
+<tr><td>ม.1</td><td>1</td><td>กิตติพงษ์ ใจดี</td></tr>
+<tr><td>ม.1</td><td>1</td><td>ธนกร พรหมมา</td></tr>
+<tr><td>ม.1</td><td>1</td><td>พีรพล แก้วทอง</td></tr>
+<tr><td>ม.1</td><td>1</td><td>ศุภชัย แสงทอง</td></tr>
+<tr><td>ม.1</td><td>1</td><td>อภิชาติ นาคดี</td></tr>
+
+<tr><td>ม.1</td><td>2</td><td>ปกรณ์ แก้วคำ</td></tr>
+<tr><td>ม.1</td><td>2</td><td>ธีรภัทร์ อินทร์ทอง</td></tr>
+<tr><td>ม.1</td><td>2</td><td>พงศกร สุขดี</td></tr>
+<tr><td>ม.1</td><td>2</td><td>ณัฐพล ศรีวงศ์</td></tr>
+<tr><td>ม.1</td><td>2</td><td>กฤษฎา คำดี</td></tr>
+
+<tr><td>ม.2</td><td>1</td><td>ศุภกร อินทร์ดี</td></tr>
+<tr><td>ม.2</td><td>1</td><td>ธนวัฒน์ ใจงาม</td></tr>
+<tr><td>ม.2</td><td>1</td><td>พีรณัฐ ศรีทอง</td></tr>
+<tr><td>ม.2</td><td>1</td><td>นครินทร์ แก้วดี</td></tr>
+<tr><td>ม.2</td><td>1</td><td>กรวิชญ์ สุขใจ</td></tr>
+
+<tr><td>ม.3</td><td>1</td><td>ธีรเมธ ทองดี</td></tr>
+<tr><td>ม.3</td><td>1</td><td>พีรภัทร แสงดี</td></tr>
+<tr><td>ม.3</td><td>1</td><td>ธนากร อินทร์สวัสดิ์</td></tr>
+<tr><td>ม.3</td><td>1</td><td>วีรภัทร คำดี</td></tr>
+<tr><td>ม.3</td><td>1</td><td>ศุภณัฐ ใจบุญ</td></tr>
+
+<tr><td>ม.4</td><td>1</td><td>กิตติศักดิ์ สุขใจ</td></tr>
+<tr><td>ม.4</td><td>1</td><td>ธนพล แสงดี</td></tr>
+<tr><td>ม.4</td><td>1</td><td>วรพล สุขสันต์</td></tr>
+<tr><td>ม.4</td><td>1</td><td>ปวริศ ทองคำ</td></tr>
+<tr><td>ม.4</td><td>1</td><td>อาทิตย์ ศรีงาม</td></tr>
+
+<tr><td>ม.5</td><td>1</td><td>ภัทรดนัย ใจบุญ</td></tr>
+<tr><td>ม.5</td><td>1</td><td>กิตติศักดิ์ ทองสุข</td></tr>
+<tr><td>ม.5</td><td>1</td><td>ธีรเดช คำสิงห์</td></tr>
+<tr><td>ม.5</td><td>1</td><td>ปริญญา ใจกล้า</td></tr>
+<tr><td>ม.5</td><td>1</td><td>ศิวกร แก้วสว่าง</td></tr>
+
+<tr><td>ม.6</td><td>1</td><td>ธันวา สุขใจ</td></tr>
+<tr><td>ม.6</td><td>1</td><td>ภูมิพัฒน์ วงศ์ดี</td></tr>
+<tr><td>ม.6</td><td>1</td><td>ณัฐวุฒิ คำแสน</td></tr>
+<tr><td>ม.6</td><td>1</td><td>กฤตภาส ศรีทอง</td></tr>
+<tr><td>ม.6</td><td>1</td><td>นพดล ใจงาม</td></tr>
 
 </table>
 
-</div>
+<script>
+
+function searchName() {
+
+let input = document.getElementById("search");
+let filter = input.value.toLowerCase();
+let table = document.getElementById("studentTable");
+let tr = table.getElementsByTagName("tr");
+
+for (let i = 1; i < tr.length; i++) {
+
+let td = tr[i].getElementsByTagName("td")[2];
+
+if (td) {
+
+let txtValue = td.textContent || td.innerText;
+
+if (txtValue.toLowerCase().indexOf(filter) > -1) {
+
+tr[i].style.display = "";
+
+} else {
+
+tr[i].style.display = "none";
+
+}
+
+}
+
+}
+
+}
+
+</script>
 
 </body>
 </html>
