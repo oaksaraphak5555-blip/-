@@ -1,55 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ระบบเกรดนักเรียน</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#f2f2f2;   ใส่ชื่อคนให้หน่อยครับห้องละ25คน ม1-6 
+transition:0.3s;
+}
+
+.dark{
+background:#121212;
+color:white;
+}
+
+/* เมนู */
+
+.menu-btn{
+position:fixed;
+left:10px;
+top:10px;
+font-size:28px;
+cursor:pointer;
+z-index:1000;
+}
+
+.dark-btn{
+position:fixed;
+right:10px;
+top:10px;
+font-size:20px;
+padding:6px 10px;
+cursor:pointer;
+}
+
+.sidebar{
+position:fixed;
+left:-250px;
+top:0;
+width:250px;
+height:100%;
+background:#222;
+padding-top:60px;
+transition:0.3s;
+}
+
+.sidebar a{
+display:block;
+color:white;
+padding:12px 20px;
+text-decoration:none;
+}
+
+.sidebar a:hover{
+background:#444;
+}
+
+.sidebar.active{
+left:0;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:60px 20px;
+}
+
+.card{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.dark .card{
+background:#1e1e1e;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th,td{
+padding:10px;
+border:1px solid #ddd;
+text-align:center;
+}
+
+th{
+background:#4CAF50;
+color:white;
+}
+
+input{
+padding:10px;
+margin:5px;
+}
+
+button{
+padding:8px 12px;
+cursor:pointer;
+}
+
+/* chat */
+
+.chat-box{
+height:200px;
+overflow-y:auto;
+border:1px solid #ccc;
+padding:10px;
+margin-bottom:10px;
+background:white;
+}
+
+.dark .chat-box{
+background:#333;
+}
+
+.chat-input{
+width:70%;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<button class="dark-btn" onclick="toggleDark()">🌙</button>
+
+<div class="sidebar" id="menu">
+<a href="index.html">หน้าหลัก</a>
+<a href="grades.html">เกรด</a>
+<a href="activities.html">กิจกรรม</a>
+<a href="contact.html">ติดต่อ</a>
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<h2>ค้นหานักเรียน</h2>
+
+<input id="searchInput" placeholder="พิมพ์ชื่อ..." onkeyup="searchStudent()">
+
+</div>
+
+<div class="card">
+
+<h2>เพิ่มนักเรียน</h2>
+
+<input id="gradeLevel" placeholder="ม.">
+<input id="room" placeholder="ห้อง">
+<input id="name" placeholder="ชื่อ">
+<input id="grade" placeholder="เกรด">
+
+<button onclick="addStudent()">เพิ่ม</button>
+
+</div>
+
+<div class="card">
+
+<h2>ตารางนักเรียน</h2>
+
+<table id="studentTable">
+
+<thead>
+
+<tr>
+<th>ชั้น</th>
+<th>ห้อง</th>
+<th>ชื่อ</th>
+<th>เกรด</th>
+<th>ลบ</th>
+</tr>
+
+</thead>
+
+<tbody id="tableBody">
+</tbody>
+
+</table>
+
+</div>
+
+<div class="card">
+
+<h2>แชทนักเรียน</h2>
+
+<div class="chat-box" id="chatBox"></div>
+
+<input id="chatInput" class="chat-input">
+<button onclick="sendChat()">ส่ง</button>
+
+</div>
+
+</div>
+
 <script>
 
 /* menu */
 
 function toggleMenu(){
+
 document.getElementById("menu").classList.toggle("active")
+
 }
 
 document.addEventListener("click",function(e){
+
 if(!e.target.closest(".sidebar") && !e.target.closest(".menu-btn")){
 document.getElementById("menu").classList.remove("active")
 }
+
 })
 
 /* dark mode */
 
 function toggleDark(){
+
 document.body.classList.toggle("dark")
+
 }
 
 /* student system */
 
-let students = JSON.parse(localStorage.getItem("students"))
-
-/* ถ้ายังไม่มีข้อมูล ให้สร้างนักเรียนอัตโนมัติ */
-
-if(!students){
-
-students = []
-
-for(let level=1; level<=6; level++){
-
-for(let room=1; room<=30; room++){
-
-for(let num=1; num<=25; num++){
-
-students.push({
-level:"ม."+level,
-room:room,
-name:"นักเรียน ม"+level+"/"+room+"-"+num,
-grade:"0"
-})
-
-}
-
-}
-
-}
-
-localStorage.setItem("students",JSON.stringify(students))
-
-}
+let students = JSON.parse(localStorage.getItem("students")) || []
 
 function renderStudents(){
 
@@ -133,7 +320,9 @@ let box=document.getElementById("chatBox")
 box.innerHTML=""
 
 chat.forEach(m=>{
+
 box.innerHTML += "<div>"+m+"</div>"
+
 })
 
 box.scrollTop = box.scrollHeight
@@ -162,3 +351,6 @@ renderStudents()
 renderChat()
 
 </script>
+
+</body>
+</html>
