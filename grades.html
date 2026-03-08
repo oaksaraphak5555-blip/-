@@ -1,246 +1,52 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ระบบเกรดนักเรียน</title>
-
-<style>
-
-body{
-margin:0;
-font-family:Arial;
-background:#f2f2f2;
-transition:0.3s;
-}
-
-.dark{
-background:#121212;
-color:white;
-}
-
-/* เมนู */
-
-.menu-btn{
-position:fixed;
-left:10px;
-top:10px;
-font-size:28px;
-cursor:pointer;
-z-index:1000;
-}
-
-.dark-btn{
-position:fixed;
-right:10px;
-top:10px;
-font-size:20px;
-padding:6px 10px;
-cursor:pointer;
-}
-
-.sidebar{
-position:fixed;
-left:-250px;
-top:0;
-width:250px;
-height:100%;
-background:#222;
-padding-top:60px;
-transition:0.3s;
-}
-
-.sidebar a{
-display:block;
-color:white;
-padding:12px 20px;
-text-decoration:none;
-}
-
-.sidebar a:hover{
-background:#444;
-}
-
-.sidebar.active{
-left:0;
-}
-
-.container{
-max-width:1000px;
-margin:auto;
-padding:60px 20px;
-}
-
-.card{
-background:white;
-padding:20px;
-margin-bottom:20px;
-border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
-}
-
-.dark .card{
-background:#1e1e1e;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-}
-
-th,td{
-padding:10px;
-border:1px solid #ddd;
-text-align:center;
-}
-
-th{
-background:#4CAF50;
-color:white;
-}
-
-input{
-padding:10px;
-margin:5px;
-}
-
-button{
-padding:8px 12px;
-cursor:pointer;
-}
-
-/* chat */
-
-.chat-box{
-height:200px;
-overflow-y:auto;
-border:1px solid #ccc;
-padding:10px;
-margin-bottom:10px;
-background:white;
-}
-
-.dark .chat-box{
-background:#333;
-}
-
-.chat-input{
-width:70%;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
-<button class="dark-btn" onclick="toggleDark()">🌙</button>
-
-<div class="sidebar" id="menu">
-<a href="index.html">หน้าหลัก</a>
-<a href="grades.html">เกรด</a>
-<a href="activities.html">กิจกรรม</a>
-<a href="contact.html">ติดต่อ</a>
-</div>
-
-<div class="container">
-
-<div class="card">
-
-<h2>ค้นหานักเรียน</h2>
-
-<input id="searchInput" placeholder="พิมพ์ชื่อ..." onkeyup="searchStudent()">
-
-</div>
-
-<div class="card">
-
-<h2>เพิ่มนักเรียน</h2>
-
-<input id="gradeLevel" placeholder="ม.">
-<input id="room" placeholder="ห้อง">
-<input id="name" placeholder="ชื่อ">
-<input id="grade" placeholder="เกรด">
-
-<button onclick="addStudent()">เพิ่ม</button>
-
-</div>
-
-<div class="card">
-
-<h2>ตารางนักเรียน</h2>
-
-<table id="studentTable">
-
-<thead>
-
-<tr>
-<th>ชั้น</th>
-<th>ห้อง</th>
-<th>ชื่อ</th>
-<th>เกรด</th>
-<th>ลบ</th>
-</tr>
-
-</thead>
-
-<tbody id="tableBody">
-</tbody>
-
-</table>
-
-</div>
-
-<div class="card">
-
-<h2>แชทนักเรียน</h2>
-
-<div class="chat-box" id="chatBox"></div>
-
-<input id="chatInput" class="chat-input">
-<button onclick="sendChat()">ส่ง</button>
-
-</div>
-
-</div>
-
-<script>
-
-/* menu */
-
-function toggleMenu(){
-
-document.getElementById("menu").classList.toggle("active")
-
-}
-
-document.addEventListener("click",function(e){
-
-if(!e.target.closest(".sidebar") && !e.target.closest(".menu-btn")){
-document.getElementById("menu").classList.remove("active")
-}
-
-})
-
-/* dark mode */
-
-function toggleDark(){
-
-document.body.classList.toggle("dark")
-
-}
 
 /* student system */
 
-let students = JSON.parse(localStorage.getItem("students")) || []
+let students = JSON.parse(localStorage.getItem("students"))
+
+if(!students){
+
+students = []
+
+let firstNames = [
+"กิตติพงษ์","ธนกฤต","พีรวิชญ์","ณัฐวุฒิ","ปกรณ์","ภูริพัฒน์","ศุภชัย","ธีรภัทร","นราวิชญ์","ธนภัทร",
+"พงศกร","กิตติศักดิ์","ชยพล","ภูมิพัฒน์","ปวริศ","อัครพล","วีรภัทร","ชยากร","ธีรเดช","พีรพัฒน์",
+"นภัทร","ภาคิน","ศุภกร","อธิป","ธนเดช"
+]
+
+let lastNames = [
+"สุวรรณ","ใจดี","ศรีสุข","คำแก้ว","ชัยมงคล","ทองดี","บุญมี","แสงทอง","สุขใจ","ใจงาม",
+"ศรีสวัสดิ์","คำหล้า","บุญทอง","แสงชัย","ใจบุญ","แก้วดี","แสงแก้ว","สุขสวัสดิ์","คำดี","บุญช่วย",
+"ศรีทอง","แก้วมณี","บุญรักษา","ใจสบาย","สุวรรณดี"
+]
+
+for(let level=1; level<=6; level++){
+
+for(let room=1; room<=3; room++){
+
+for(let i=0;i<25;i++){
+
+let name = firstNames[i] + " " + lastNames[Math.floor(Math.random()*lastNames.length)]
+
+students.push({
+level:"ม."+level,
+room:room,
+name:name,
+grade:"-"
+})
+
+}
+
+}
+
+}
+
+localStorage.setItem("students",JSON.stringify(students))
+
+}
 
 function renderStudents(){
 
 let body = document.getElementById("tableBody")
-
 body.innerHTML=""
 
 students.forEach((s,i)=>{
@@ -289,67 +95,3 @@ students[i].grade = val
 localStorage.setItem("students",JSON.stringify(students))
 
 }
-
-/* search */
-
-function searchStudent(){
-
-let input=document.getElementById("searchInput").value.toLowerCase()
-
-let rows=document.querySelectorAll("#studentTable tbody tr")
-
-rows.forEach(r=>{
-
-let name=r.children[2].innerText.toLowerCase()
-
-r.style.display = name.includes(input) ? "" : "none"
-
-})
-
-}
-
-/* chat */
-
-let chat = JSON.parse(localStorage.getItem("chat")) || []
-
-function renderChat(){
-
-let box=document.getElementById("chatBox")
-
-box.innerHTML=""
-
-chat.forEach(m=>{
-
-box.innerHTML += "<div>"+m+"</div>"
-
-})
-
-box.scrollTop = box.scrollHeight
-
-}
-
-function sendChat(){
-
-let input=document.getElementById("chatInput")
-
-if(input.value.trim()!=""){
-
-chat.push(input.value)
-
-localStorage.setItem("chat",JSON.stringify(chat))
-
-input.value=""
-
-renderChat()
-
-}
-
-}
-
-renderStudents()
-renderChat()
-
-</script>
-
-</body>
-</html>
